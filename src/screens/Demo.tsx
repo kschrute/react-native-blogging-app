@@ -8,7 +8,7 @@
  * @format
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,8 +16,8 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
 } from 'react-native';
-import firestore from '@react-native-firebase/firestore';
 
 import {
   Header,
@@ -29,19 +29,11 @@ import {
 
 declare const global: { HermesInternal: null | {} };
 
-const App = () => {
-  useEffect(() => {
-    (async () => {
-      const snap = await firestore().collection('posts').get();
-      const posts = snap.docs.map((doc) => doc.data());
-      console.log('snap', snap);
-      console.log('snap.size', snap.size);
-      console.log('snap.docs', snap.docs);
-      console.log('posts', posts);
-
-      console.log('done');
-    })();
-  }, []);
+export const Demo = ({ navigation }) => {
+  const onPress = () => {
+    console.log('press');
+    navigation.navigate('Post');
+  };
 
   return (
     <>
@@ -57,6 +49,7 @@ const App = () => {
             </View>
           )}
           <View style={styles.body}>
+            <Button title="Post" onPress={onPress} />
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
               <Text style={styles.sectionDescription}>
@@ -128,5 +121,3 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
-
-export default App;
