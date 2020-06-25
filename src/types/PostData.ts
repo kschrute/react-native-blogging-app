@@ -1,8 +1,10 @@
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+
 export interface PostData {
   author: string;
   author_id: string;
   body: string;
   cover: string;
-  published: Date;
+  published: FirebaseFirestoreTypes.Timestamp;
   title: string;
 }

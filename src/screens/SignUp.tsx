@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
-import { Button, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  Button,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTextInput } from '../hooks/useTextInput';
 import { textError, textInput } from '../styles';
-import { useStore } from '../store/store';
+import { useStore } from '../store';
 
 export const SignUp = () => {
-  const store = useStore();
+  const { auth } = useStore();
   const navigation = useNavigation();
 
   const [error, setError] = useState();
@@ -16,7 +25,7 @@ export const SignUp = () => {
 
   const handleSignUp = async () => {
     try {
-      await store.signup(email, password, name);
+      await auth.signup(email, password, name);
       navigation.navigate('Home');
     } catch (e) {
       setError(e.message);

@@ -10,7 +10,7 @@ import { Logout } from './screens/Logout';
 import { AddNewPost } from './screens/AddNewPost';
 import { Button } from 'react-native';
 import { Home } from './screens/Home';
-import { StoreProvider } from './store/store';
+import { StoreProvider } from './store';
 import { PostData } from './types';
 
 const Stack = createStackNavigator();

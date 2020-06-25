@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
+import { User } from '../types';
+
+const LOGIN = 'LOGIN';
+const LOGOUT = 'LOGOUT';
 
 interface State {
   isLoggedIn: boolean | null;
-  user: FirebaseAuthTypes.User | null;
+  user: User | null;
 }
 
 const initialState: State = {
@@ -11,12 +15,22 @@ const initialState: State = {
   user: null,
 };
 
-const storeContext = React.createContext<any>(null);
+interface LoginAction {
+  type: typeof LOGIN;
+  user: User;
+}
 
-const reducer = (state: State, action: any) => {
+interface LogoutAction {
+  type: typeof LOGOUT;
+}
+
+type ActionType = LoginAction | LogoutAction;
+
+const reducer = (state: State, action: ActionType) => {
   switch (action.type) {
     case 'LOGIN':
-      return { ...state, isLoggedIn: true, user: action.user };
+      const { user } = action;
+      return { ...state, isLoggedIn: true, user };
     case 'LOGOUT':
       return { ...state, isLoggedIn: false, user: null };
     default:
@@ -24,7 +38,7 @@ const reducer = (state: State, action: any) => {
   }
 };
 
-export const StoreProvider = ({ children }: any) => {
+export const useAuthStore = () => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const actions = React.useMemo(
     () => ({
@@ -36,7 +50,11 @@ export const StoreProvider = ({ children }: any) => {
         if (user) {
           dispatch({
             type: 'LOGIN',
-            user: user,
+            user: {
+              id: user.uid,
+              name: user.displayName as string,
+              email: user.email as string,
+            },
           });
         }
       },
@@ -73,17 +91,5 @@ export const StoreProvider = ({ children }: any) => {
     })();
   }, []);
 
-  return (
-    <storeContext.Provider value={{ ...state, ...actions }}>
-      {children}
-    </storeContext.Provider>
-  );
-};
-
-export const useStore = () => {
-  const store = React.useContext(storeContext);
-  if (!store) {
-    throw new Error('useStore must be used within a StoreProvider.');
-  }
-  return store;
+  return { ...state, ...actions };
 };

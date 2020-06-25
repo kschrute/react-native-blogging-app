@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useStore } from '../store/store';
+import { useStore } from '../store';
 
 export const Logout = () => {
-  const store = useStore();
+  const { auth } = useStore();
   const navigation = useNavigation();
 
   useEffect(() => {
     (async () => {
       try {
-        await store.logout();
+        await auth.logout();
       } catch (e) {}
       // navigation.navigate('Home', { authenticated: false });
       navigation.navigate('Home');

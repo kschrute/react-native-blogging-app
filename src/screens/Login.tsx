@@ -11,10 +11,10 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { useTextInput } from '../hooks/useTextInput';
 import { textError, textInput } from '../styles';
-import { useStore } from '../store/store';
+import { useStore } from '../store';
 
 export const Login = () => {
-  const store = useStore();
+  const { auth } = useStore();
   const navigation = useNavigation();
 
   const [error, setError] = useState();
@@ -23,7 +23,7 @@ export const Login = () => {
 
   const handleLogin = async () => {
     try {
-      await store.login(email, password);
+      await auth.login(email, password);
       // navigation.navigate('Home', { authenticated: true });
       navigation.navigate('Home');
     } catch (e) {
