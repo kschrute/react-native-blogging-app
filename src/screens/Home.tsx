@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import auth from '@react-native-firebase/auth';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
+  Route,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
 } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 import { Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import firestore from '@react-native-firebase/firestore';
 import { header } from '../styles';
+import { PostData } from '../types';
+import { useStore } from '../store/store';
 
-export const Posts = () => {
+export const Home = () => {
+  const store = useStore();
+  const { user } = store;
   const navigation = useNavigation();
-  const [loadedPosts, setLoadedPostsPosts] = useState();
+  const [loadedPosts, setLoadedPostsPosts] = useState<PostData[]>();
 
   useEffect(() => {
     (async () => {
-      const { currentUser } = await auth();
-      console.log('currentUser', currentUser);
       const snap = await firestore().collection('posts').get();
-      const posts = snap.docs.map((doc) => doc.data());
+      const posts = snap.docs.map((doc) => doc.data()) as PostData[];
       setLoadedPostsPosts(posts);
       console.log('posts', posts);
     })();
@@ -29,15 +31,21 @@ export const Posts = () => {
 
   return (
     <>
-      <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.container}>
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Text style={header}>Blog Posts</Text>
 
+          {/*{user && <Text>{JSON.stringify(user, null, 2)}</Text>}*/}
           {loadedPosts && <Text>{JSON.stringify(loadedPosts, null, 2)}</Text>}
 
+          <Button
+            title="Add New Post"
+            onPress={() => {
+              navigation.navigate('AddNewPost');
+            }}
+          />
           <Button
             title="Show Post"
             onPress={() => {
@@ -77,8 +85,9 @@ export const Posts = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   scrollView: {
-    padding: 10,
+    padding: 20,
   },
 });
