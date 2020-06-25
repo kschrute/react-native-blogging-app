@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import auth from '@react-native-firebase/auth';
+import { useStore } from '../store/store';
 
 export const Logout = () => {
+  const store = useStore();
   const navigation = useNavigation();
 
   useEffect(() => {
     (async () => {
       try {
-        await auth().signOut();
+        await store.logout();
       } catch (e) {}
-      navigation.navigate('Posts');
+      // navigation.navigate('Home', { authenticated: false });
+      navigation.navigate('Home');
     })();
   }, []);
 

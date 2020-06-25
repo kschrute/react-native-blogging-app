@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  Button,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTextInput } from '../hooks/useTextInput';
 import { textError, textInput } from '../styles';
-import auth from '@react-native-firebase/auth';
+import { useStore } from '../store/store';
 
 export const Login = () => {
+  const store = useStore();
   const navigation = useNavigation();
 
   const [error, setError] = useState();
@@ -14,35 +23,46 @@ export const Login = () => {
 
   const handleLogin = async () => {
     try {
-      await auth().signInWithEmailAndPassword(email, password);
-      navigation.navigate('Posts');
+      await store.login(email, password);
+      // navigation.navigate('Home', { authenticated: true });
+      navigation.navigate('Home');
     } catch (e) {
       setError(e.message);
     }
   };
 
   return (
-    <View style={styles.container}>
-      {error && <Text style={textError}>{error}</Text>}
-      <TextInput
-        placeholder="Email"
-        autoCapitalize="none"
-        style={styles.textInput}
-        {...emailInputProps}
-      />
-      <TextInput
-        secureTextEntry
-        placeholder="Password"
-        autoCapitalize="none"
-        style={styles.textInput}
-        {...passwordInputProps}
-      />
-      <Button title="Login" onPress={handleLogin} />
-      <Button
-        title="Don't have an account? Sign Up"
-        onPress={() => navigation.navigate('SignUp')}
-      />
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
+      // contentContainerStyle={{ flex: 1 }}
+      keyboardVerticalOffset={88}
+      enabled>
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.inner}>
+        {error && <Text style={textError}>{error}</Text>}
+        <TextInput
+          placeholder="Email"
+          autoCapitalize="none"
+          style={textInput}
+          {...emailInputProps}
+        />
+        <TextInput
+          secureTextEntry
+          placeholder="Password"
+          autoCapitalize="none"
+          style={textInput}
+          {...passwordInputProps}
+        />
+        <Button title="Login" onPress={handleLogin} />
+        <Button
+          title="Don't have an account? Sign Up"
+          onPress={() => navigation.navigate('SignUp')}
+        />
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -50,10 +70,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
+    // justifyContent: 'center',
+    // padding: 20,
   },
-  textInput: {
-    ...textInput,
+  innerContainer: {
+    flex: 1,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // padding: 20,
+  },
+  inner: {
+    flex: 1,
+    padding: 20,
+    // flex: 1,
+    // justifyContent: 'space-around',
+    justifyContent: 'center',
   },
 });

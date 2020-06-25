@@ -11,11 +11,12 @@ const styles = StyleSheet.create({
   },
   textInput: {
     alignSelf: 'stretch',
+    backgroundColor: 'white',
     borderRadius: 10,
-    height: 40,
-    borderColor: '#aaa',
+    borderColor: '#ddd',
     borderWidth: 1,
     marginTop: 20,
+    paddingVertical: 12,
     paddingHorizontal: 10,
   },
 });
