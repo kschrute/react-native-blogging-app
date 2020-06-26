@@ -10,73 +10,83 @@ import {
   View,
 } from 'react-native';
 import { Button } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 import { useNavigation } from '@react-navigation/native';
 import { useTextInput } from '../hooks/useTextInput';
 import { header, textError, textInput } from '../styles';
-import firestore from '@react-native-firebase/firestore';
-import { useStore } from '../store/store';
+import { useStore } from '../store';
+import { useFocusEffect } from '@react-navigation/native';
 import { PostData } from '../types';
 
 export const AddNewPost = () => {
-  const store = useStore();
   const navigation = useNavigation();
+  const { auth, blog } = useStore();
+  const { isLoggedIn, user } = auth;
 
-  const { user } = store;
   const [error, setError] = useState();
   const [title, titleInputProps] = useTextInput();
   const [body, bodyInputProps] = useTextInput();
 
+  useFocusEffect(
+    React.useCallback(() => {
+      if (!isLoggedIn) {
+        navigation.navigate('SignUp', { isTryingToPost: true });
+      }
+    }, [isLoggedIn]),
+  );
+
   const handlePost = async () => {
     if (user) {
       const post: PostData = {
-        author: user.displayName,
-        author_id: user.uid,
+        author: user.name,
+        author_id: user.id,
         cover: '',
-        published: new Date(),
+        published: firestore.Timestamp.now(),
         title,
         body,
       };
+      await blog.add(post);
       console.log('post', post);
-      const doc = await firestore().collection('posts').add(post);
-      console.log('doc', doc);
+      // const doc = await firestore().collection('posts').add(post);
+      // console.log('doc', doc);
       navigation.navigate('Home');
     }
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}
-      keyboardVerticalOffset={88}
-      enabled>
-      <View style={styles.inner}>
-        <ScrollView
-          keyboardShouldPersistTaps="handled"
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Text style={header}>Blog Posts</Text>
-          {error && <Text style={textError}>{error}</Text>}
+    user && (
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}
+        keyboardVerticalOffset={88}
+        enabled>
+        <View style={styles.inner}>
+          <ScrollView
+            keyboardShouldPersistTaps="handled"
+            contentInsetAdjustmentBehavior="automatic"
+            style={styles.scrollView}>
+            <Text>Add new post as {user.name}</Text>
+            {error && <Text style={textError}>{error}</Text>}
 
-          {Array(1).fill(<Text key={1}>Blah</Text>)}
-
-          <TextInput
-            placeholder="Title"
-            autoCapitalize="words"
-            style={textInput}
-            {...titleInputProps}
-          />
-          <TextInput
-            placeholder="Post"
-            autoCapitalize="none"
-            style={textInput}
-            scrollEnabled={false}
-            multiline
-            {...bodyInputProps}
-          />
-          <Button title="Post" onPress={handlePost} />
-        </ScrollView>
-      </View>
-    </KeyboardAvoidingView>
+            <TextInput
+              placeholder="Title"
+              autoCapitalize="words"
+              style={textInput}
+              {...titleInputProps}
+            />
+            <TextInput
+              placeholder="Post"
+              autoCapitalize="none"
+              style={styles.textInputPostBody}
+              scrollEnabled={false}
+              multiline
+              {...bodyInputProps}
+            />
+            <Button title="Post" onPress={handlePost} />
+          </ScrollView>
+        </View>
+      </KeyboardAvoidingView>
+    )
   );
 };
 
@@ -96,5 +106,9 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     padding: 20,
+  },
+  textInputPostBody: {
+    ...textInput,
+    minHeight: 200,
   },
 });

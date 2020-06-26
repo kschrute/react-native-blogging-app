@@ -1,10 +1,12 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { header } from '../styles';
+import { header, iconButton } from '../styles';
 import { useStore } from '../store';
 import { Posts } from '../components/Posts';
+import { Icon } from 'react-native-elements';
+import { Header } from '../components/Header';
 
 export const Home = () => {
   const navigation = useNavigation();
@@ -14,16 +16,51 @@ export const Home = () => {
   // console.log('user', user);
   // console.log('posts', posts);
 
+  const onPress = () => {
+    navigation.navigate('AddNewPost');
+  };
+
+  const renderHeader = () => {
+    return (
+      <>
+        <Text style={header}>Blog Posts</Text>
+        {user && (
+          <>
+            <Button
+              title="Logout"
+              onPress={() => {
+                navigation.navigate('Logout');
+              }}
+            />
+          </>
+        )}
+        {!user && (
+          <Button
+            title="Login"
+            onPress={() => {
+              navigation.navigate('Login');
+            }}
+          />
+        )}
+      </>
+    );
+  };
+
   return (
     <>
       <SafeAreaView style={styles.container}>
-        <Button
-          title="Add New Post"
-          onPress={() => {
-            navigation.navigate('AddNewPost');
-          }}
-        />
-        <Posts />
+        {/*<Posts header={renderHeader()} />*/}
+        <Posts header={<Header />} />
+        <View style={iconButton}>
+          <Icon
+            raised
+            reverse
+            name="plus"
+            type="font-awesome"
+            color="#2196F3"
+            onPress={onPress}
+          />
+        </View>
       </SafeAreaView>
     </>
   );

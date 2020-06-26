@@ -67,7 +67,7 @@ export const useAuthStore = () => {
         await cred.user.updateProfile({
           displayName: name,
         });
-        await actions.authenticate(cred.user);
+        await actions.authenticate();
       },
 
       login: async (email: string, password: string) => {

@@ -1,7 +1,10 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackScreenProps,
+} from '@react-navigation/stack';
 import { Demo } from './screens/Demo';
 import { Post } from './screens/Post';
 import { SignUp } from './screens/SignUp';
@@ -12,17 +15,22 @@ import { Button } from 'react-native';
 import { Home } from './screens/Home';
 import { StoreProvider } from './store';
 import { PostData } from './types';
+import { RouteProp } from '@react-navigation/core/lib/typescript/src/types';
 
 const Stack = createStackNavigator();
 
 export type RootStackParamList = {
   Home: undefined;
   Post: { post: PostData };
-  SignUp: undefined;
+  SignUp: { isTryingToPost: boolean };
   Login: undefined;
   Logout: undefined;
   Demo: undefined;
 };
+
+type SignupScreenProps = StackScreenProps<RootStackParamList, 'SignUp'>;
+// type SignupScreenParams = bool;
+type SignupScreenParams = { isTryingToPost: boolean } | undefined;
 
 export default function App() {
   return (
@@ -38,18 +46,47 @@ export default function App() {
           <Stack.Screen
             name="AddNewPost"
             component={AddNewPost}
-            options={({ navigation, route }) => ({
+            options={({ navigation }) => ({
               title: 'Add New Post',
               headerLeft: () => (
-                <Button
-                  onPress={() => navigation.goBack()}
-                  title="Cancel"
-                  // color="#00cc00"
-                />
+                <Button title="Cancel" onPress={() => navigation.goBack()} />
               ),
             })}
           />
-          <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={({ navigation, route }: any) => ({
+              headerLeft: () => (
+                <Button
+                  title="Cancel"
+                  onPress={() =>
+                    route.params && route.params.isTryingToPost
+                      ? navigation.navigate('Home')
+                      : navigation.goBack()
+                  }
+                />
+              ),
+            })}
+            // options={({
+            //   navigation,
+            //   route,
+            // }: {
+            //   route: SignupScreenParams;
+            //   navigation: any;
+            // }) => ({
+            //   headerLeft: () => (
+            //     <Button
+            //       title="Cancel"
+            //       onPress={() =>
+            //         route.params && route.params.isTryingToPost
+            //           ? navigation.navigate('Home')
+            //           : navigation.goBack()
+            //       }
+            //     />
+            //   ),
+            // })}
+          />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen
             name="Logout"

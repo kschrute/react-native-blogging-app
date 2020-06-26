@@ -1,11 +1,11 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import moment from 'moment';
 import { useStore } from '../store';
 import { PostItem } from '../types';
 
 interface Props {
+  header: any;
   // posts: PostData[];
 }
 
@@ -26,18 +26,17 @@ const Item = React.memo(({ post }: { post: PostItem }) => {
   );
 });
 
-export const Posts = (props: Props) => {
-  const navigation = useNavigation();
-  const { auth, blog } = useStore();
-  const { user } = auth;
+export const Posts = ({ header }: Props) => {
+  const { blog } = useStore();
   const { posts } = blog;
 
   return (
     <View style={styles.container}>
-      {/*{posts && <Text>{JSON.stringify(posts, null, 2)}</Text>}*/}
       <FlatList
         data={posts}
+        ListHeaderComponent={header}
         refreshing={blog.isLoading}
+        showsVerticalScrollIndicator={false}
         onRefresh={blog.load}
         renderItem={({ item }) => <Item post={item} />}
         keyExtractor={(post) => post.id}
@@ -54,8 +53,8 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: '#f9c2ff',
     padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    marginVertical: 10,
+    // marginHorizontal: 16,
   },
   title: {
     fontSize: 32,

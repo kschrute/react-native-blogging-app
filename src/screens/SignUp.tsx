@@ -13,10 +13,16 @@ import { useNavigation } from '@react-navigation/native';
 import { useTextInput } from '../hooks/useTextInput';
 import { textError, textInput } from '../styles';
 import { useStore } from '../store';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../index';
 
-export const SignUp = () => {
+type Props = StackScreenProps<RootStackParamList, 'SignUp'>;
+
+export const SignUp = ({ route }: Props) => {
   const { auth } = useStore();
   const navigation = useNavigation();
+  const { params } = route;
+  const { isTryingToPost } = params || {};
 
   const [error, setError] = useState();
   const [name, nameInputProps] = useTextInput();
@@ -26,7 +32,11 @@ export const SignUp = () => {
   const handleSignUp = async () => {
     try {
       await auth.signup(email, password, name);
-      navigation.navigate('Home');
+      if (isTryingToPost) {
+        navigation.navigate('AddNewPost');
+      } else {
+        navigation.navigate('Home');
+      }
     } catch (e) {
       setError(e.message);
     }
@@ -43,6 +53,9 @@ export const SignUp = () => {
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.inner}>
+        {isTryingToPost && (
+          <Text>You need to sign up or log in first to be able to post.</Text>
+        )}
         {error && <Text style={textError}>{error}</Text>}
         <TextInput
           placeholder="Your Name"

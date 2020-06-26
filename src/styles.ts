@@ -19,6 +19,19 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 10,
   },
+  iconButton: {
+    position: 'absolute',
+    bottom: 30,
+    right: 30,
+    zIndex: 1,
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.33,
+    shadowRadius: 3,
+  },
 });
 
-export const { header, textError, textInput } = styles;
+export const { iconButton, header, textError, textInput } = styles;
