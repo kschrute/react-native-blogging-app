@@ -1,10 +1,15 @@
 import { StyleSheet } from 'react-native';
 
+export const colorPrimary = '#2196F3';
+export const colorSecondary = '#607D8B';
+// export const colorSecondary = '#757575';
+// export const colorSecondary = '#BDBDBD';
+
 const styles = StyleSheet.create({
   header: {
     fontSize: 33,
     fontWeight: 'bold',
-    marginBottom: 20,
+    // marginBottom: 20,
   },
   textError: {
     color: 'red',

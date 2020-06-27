@@ -8,14 +8,16 @@ import {
   Text,
   TextInput,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { useTextInput } from '../hooks/useTextInput';
 import { textError, textInput } from '../styles';
 import { useStore } from '../store';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../index';
 
-export const Login = () => {
+type Props = StackScreenProps<RootStackParamList, 'Login'>;
+
+export const Login = ({ navigation }: Props) => {
   const { auth } = useStore();
-  const navigation = useNavigation();
 
   const [error, setError] = useState();
   const [email, emailInputProps] = useTextInput();

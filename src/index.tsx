@@ -14,35 +14,74 @@ import { AddNewPost } from './screens/AddNewPost';
 import { Button } from 'react-native';
 import { Home } from './screens/Home';
 import { StoreProvider } from './store';
-import { PostData } from './types';
-import { RouteProp } from '@react-navigation/core/lib/typescript/src/types';
-
-const Stack = createStackNavigator();
+import { Profile } from './screens/Profile';
+import { PostItem } from './types/PostItem';
 
 export type RootStackParamList = {
   Home: undefined;
-  Post: { post: PostData };
+  Post: {
+    id?: string;
+    post?: PostItem;
+  };
   SignUp: { isTryingToPost: boolean };
   Login: undefined;
   Logout: undefined;
+  AddNewPost: undefined;
   Demo: undefined;
 };
+
+const Stack = createStackNavigator();
 
 type SignupScreenProps = StackScreenProps<RootStackParamList, 'SignUp'>;
 // type SignupScreenParams = bool;
 type SignupScreenParams = { isTryingToPost: boolean } | undefined;
 
 export default function App() {
+  // const ref = React.useRef();
+  // const { getInitialState } = useLinking(ref, {
+  //   prefixes: ['toptalbloggingapp://'],
+  //   config: {
+  //     screens: {
+  //       Post: 'post/:sort',
+  //     },
+  //   },
+  // });
+
   return (
     <StoreProvider>
-      <NavigationContainer>
+      <NavigationContainer
+        linking={{
+          prefixes: ['toptalbloggingapp://'],
+          config: {
+            Post: 'post/:id',
+          },
+        }}>
         <Stack.Navigator mode="modal">
           <Stack.Screen
             name="Home"
             component={Home}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Post" component={Post} />
+          <Stack.Screen
+            name="Post"
+            component={Post}
+            options={{
+              headerBackTitle: '',
+            }}
+          />
+          <Stack.Screen
+            name="Profile"
+            component={Profile}
+            options={({ navigation }) => ({
+              headerBackTitle: '',
+              headerRight: () => (
+                <Button
+                  title="Logout"
+                  onPress={() => navigation.navigate('Logout')}
+                />
+              ),
+            })}
+          />
           <Stack.Screen
             name="AddNewPost"
             component={AddNewPost}

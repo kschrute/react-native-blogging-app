@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import firestore, {
-  FirebaseFirestoreTypes,
-} from '@react-native-firebase/firestore';
-import { PostData, PostItem } from '../types';
+import { addPost, subscribeToPosts } from '../services/blog';
+import { PostData, PostItem } from '../services/blog/types';
 
 const LOADING = 'LOADING';
 const LOADED = 'LOADED';
@@ -55,40 +53,13 @@ export const useBlogStore = () => {
   const actions = React.useMemo(
     () => ({
       load: async () => {
-        console.log('LOAD ACTION CALLED');
-        dispatch({ type: 'LOADING' });
-        const callback = (snap: FirebaseFirestoreTypes.QuerySnapshot) => {
-          console.log('snap', snap);
-          const posts = snap.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          })) as PostItem[];
-          console.log('LOADED', posts);
+        const callback = (posts: PostItem[]) =>
           dispatch({ type: 'LOADED', posts });
-        };
-        const handleError = (error: Error) => {
-          console.log('error', error);
-        };
         unsubscribe.current && unsubscribe.current();
-        unsubscribe.current = await firestore()
-          .collection('posts')
-          .orderBy('published', 'desc')
-          .onSnapshot(callback, handleError);
-        console.log('unsubscribe', unsubscribe);
-        // const snap = await firestore()
-        //   .collection('posts')
-        //   .orderBy('published', 'desc')
-        //   .get();
-        // const posts = snap.docs.map((doc) => ({
-        //   id: doc.id,
-        //   ...doc.data(),
-        // })) as PostData[];
-        // dispatch({ type: 'LOADED', posts });
+        unsubscribe.current = await subscribeToPosts(callback);
       },
       add: async (postData: PostData) => {
-        console.log('postData', postData);
-        const doc = await firestore().collection('posts').add(postData);
-        console.log('doc', doc);
+        await addPost(postData);
       },
     }),
     [],

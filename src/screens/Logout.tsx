@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { useStore } from '../store';
+import { StackScreenProps } from '@react-navigation/stack';
+import { RootStackParamList } from '../index';
 
-export const Logout = () => {
+type Props = StackScreenProps<RootStackParamList, 'Logout'>;
+
+export const Logout = ({ navigation }: Props) => {
   const { auth } = useStore();
-  const navigation = useNavigation();
 
   useEffect(() => {
     (async () => {
