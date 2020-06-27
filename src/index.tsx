@@ -10,15 +10,18 @@ import { Post } from './screens/Post';
 import { SignUp } from './screens/SignUp';
 import { Login } from './screens/Login';
 import { Logout } from './screens/Logout';
-import { AddNewPost } from './screens/AddNewPost';
+import { PostAdd } from './screens/PostAdd';
 import { Button } from 'react-native';
 import { Home } from './screens/Home';
 import { StoreProvider } from './store';
 import { Profile } from './screens/Profile';
-import { PostItem } from './types/PostItem';
+import { PostItem } from './services/blog/types';
 
 export type RootStackParamList = {
   Home: undefined;
+  PostAdd: {
+    post?: PostItem;
+  };
   Post: {
     id?: string;
     post?: PostItem;
@@ -26,7 +29,6 @@ export type RootStackParamList = {
   SignUp: { isTryingToPost: boolean };
   Login: undefined;
   Logout: undefined;
-  AddNewPost: undefined;
   Demo: undefined;
 };
 
@@ -83,8 +85,8 @@ export default function App() {
             })}
           />
           <Stack.Screen
-            name="AddNewPost"
-            component={AddNewPost}
+            name="PostAdd"
+            component={PostAdd}
             options={({ navigation }) => ({
               title: 'Add New Post',
               headerLeft: () => (

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { addPost, subscribeToPosts } from '../services/blog';
+import { addPost, subscribeToPosts, updatePost } from '../services/blog';
 import { PostData, PostItem } from '../services/blog/types';
 
 const LOADING = 'LOADING';
@@ -35,7 +35,10 @@ const reducer = (state: State, action: ActionType) => {
       if (state.posts) {
         const loaded = posts.map((post) => {
           const existingPost =
-            state.posts && state.posts.find((p) => p.id === post.id);
+            state.posts &&
+            state.posts.find(
+              (p) => p.id === post.id && p.published === post.published,
+            );
           return existingPost || post;
         });
         return { ...state, isLoading: false, posts: loaded };
@@ -58,8 +61,12 @@ export const useBlogStore = () => {
         unsubscribe.current && unsubscribe.current();
         unsubscribe.current = await subscribeToPosts(callback);
       },
-      add: async (postData: PostData) => {
-        await addPost(postData);
+      add: async (data: PostData) => {
+        await addPost(data);
+      },
+      update: async (post: PostItem, data: PostData) => {
+        await updatePost(post, data);
+        await actions.load();
       },
     }),
     [],

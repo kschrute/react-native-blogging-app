@@ -1,9 +1,8 @@
 import React from 'react';
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
-import moment from 'moment';
+import { FlatList, StyleSheet, View } from 'react-native';
 import { useStore } from '../store';
-import { PostItem } from '../types';
 import { PostTeaser } from './PostTeaser';
+import { PostItem } from '../services/blog/types';
 
 interface Props {
   header: any;
@@ -39,5 +38,6 @@ export const Posts = ({ header }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: -10,
   },
 });

@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, Share } from 'react-native';
+import { ScrollView, StyleSheet, Text, Share, Alert } from 'react-native';
 import { Button } from 'react-native';
 // import Share from 'react-native-share';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../index';
-import { getPostLink, loadPost } from '../services/blog';
+import { deletePost, getPostLink, loadPost } from '../services/blog';
 import { PostItem } from '../types/PostItem';
+import { useStore } from '../store';
 
 type Props = StackScreenProps<RootStackParamList, 'Post'>;
 
 export const Post = ({ navigation, route }: Props) => {
+  const { auth } = useStore();
+  const { user } = auth;
   const { params } = route;
   const { id } = params || {};
   const [post, setPost] = useState<PostItem | undefined>(params.post);
   const { title } = post || {};
-
-  console.log('post', post);
-  console.log('id', id);
-  console.log('route', route);
+  const isMyPost = post && user && user.id === post.author_id;
 
   useEffect(() => {
     navigation.setOptions({
@@ -32,6 +32,31 @@ export const Post = ({ navigation, route }: Props) => {
       }
     })();
   }, [id]);
+
+  const onEdit = () => {
+    navigation.navigate('PostAdd', { post });
+  };
+
+  const onDelete = async () => {
+    if (!post) {
+      return;
+    }
+    Alert.alert(
+      'Delete This Post',
+      'Are you sure you want to delete this post? This actions is irreversible.',
+      [
+        { text: 'Cancel' },
+        {
+          text: 'Yes',
+          onPress: async () => {
+            await deletePost(post);
+            navigation.navigate('Home');
+          },
+        },
+      ],
+      { cancelable: true },
+    );
+  };
 
   const onShare = async () => {
     if (!post) {
@@ -80,6 +105,8 @@ export const Post = ({ navigation, route }: Props) => {
       style={styles.container}
       contentContainerStyle={styles.contentContainer}>
       <Text>{JSON.stringify(post, null, 2)}</Text>
+      {isMyPost && <Button title="Edit" onPress={onEdit} />}
+      {isMyPost && <Button title="Delete" onPress={onDelete} />}
       <Button title="Share" onPress={onShare} />
       <Button
         title="Back"

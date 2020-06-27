@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   ImageSourcePropType,
@@ -33,19 +33,33 @@ const options = {
   },
 };
 
-type Props = StackScreenProps<RootStackParamList, 'AddNewPost'>;
+type Props = StackScreenProps<RootStackParamList, 'PostAdd'>;
 
-export const AddNewPost = ({ navigation }: Props) => {
+export const PostAdd = ({ navigation, route }: Props) => {
   // const navigation = useNavigation();
+  const { params } = route;
+  const { post } = params || {};
   const { auth, blog } = useStore();
   const { isLoggedIn, user } = auth;
 
+  console.log('post', post);
+
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState();
-  // const [cover, setCover] = useState<{ uri: string }>();
-  const [cover, setCover] = useState<ImageSourcePropType>();
-  const [title, titleInputProps] = useTextInput();
-  const [body, bodyInputProps] = useTextInput();
+  const [cover, setCover] = useState<{ uri: string }>();
+  // const [cover, setCover] = useState<ImageSourcePropType>();
+  const [title, titleInputProps] = useTextInput(post?.title);
+  const [body, bodyInputProps] = useTextInput(post?.body);
+
+  useEffect(() => {
+    if (post) {
+      navigation.setOptions({
+        title: `Edit ${post.title}`,
+      });
+      const source = { uri: post.cover };
+      setCover(source);
+    }
+  }, [navigation, post]);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -55,7 +69,7 @@ export const AddNewPost = ({ navigation }: Props) => {
     }, [isLoggedIn]),
   );
 
-  const handlePost = async () => {
+  const save = async () => {
     if (!user) {
       return;
     }
@@ -64,8 +78,8 @@ export const AddNewPost = ({ navigation }: Props) => {
 
     let url = '';
 
-    const { uri } = cover || {};
-    if (uri) {
+    if (cover && cover.uri) {
+      const { uri } = cover;
       const resizedImage = await ImageResizer.createResizedImage(
         uri,
         600,
@@ -82,7 +96,7 @@ export const AddNewPost = ({ navigation }: Props) => {
       url = await file.getDownloadURL();
     }
 
-    const post: PostData = {
+    const data: PostData = {
       author: user.name,
       author_id: user.id,
       cover: url,
@@ -90,8 +104,15 @@ export const AddNewPost = ({ navigation }: Props) => {
       title,
       body,
     };
-    await blog.add(post);
-    console.log('post', post);
+
+    if (post) {
+      console.log('UPDATING...');
+      console.log('post', post);
+      console.log('data', data);
+      await blog.update(post, data);
+    } else {
+      await blog.add(data);
+    }
 
     setIsSaving(false);
 
@@ -153,47 +174,44 @@ export const AddNewPost = ({ navigation }: Props) => {
   };
 
   return (
-    user && (
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.container}
-        keyboardVerticalOffset={88}
-        enabled>
-        <View style={styles.inner}>
-          <ScrollView
-            keyboardShouldPersistTaps="handled"
-            contentInsetAdjustmentBehavior="automatic"
-            style={styles.scrollView}>
-            <Text>Add new post as {user.name}</Text>
-            {error && <Text style={textError}>{error}</Text>}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
+      keyboardVerticalOffset={88}
+      enabled>
+      <View style={styles.inner}>
+        <ScrollView
+          keyboardShouldPersistTaps="handled"
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>
+          {error && <Text style={textError}>{error}</Text>}
 
-            <Button title="Upload Cover Image" onPress={uploadImage} />
+          <Button title="Upload Cover Image" onPress={uploadImage} />
 
-            <TextInput
-              placeholder="Title"
-              autoCapitalize="words"
-              style={textInput}
-              {...titleInputProps}
-            />
-            <TextInput
-              placeholder="Post"
-              autoCapitalize="none"
-              style={styles.textInputPostBody}
-              scrollEnabled={false}
-              multiline
-              {...bodyInputProps}
-            />
-            {cover && <Image source={cover} style={styles.cover} />}
-            <Text>{JSON.stringify(cover)}</Text>
-            <Button title="Select Cover Image" onPress={handleImage} />
-            <Button
-              title={isSaving ? 'Saving...' : 'Post'}
-              onPress={handlePost}
-            />
-          </ScrollView>
-        </View>
-      </KeyboardAvoidingView>
-    )
+          <TextInput
+            placeholder="Title"
+            autoCapitalize="words"
+            style={textInput}
+            {...titleInputProps}
+          />
+          <TextInput
+            placeholder="Post"
+            autoCapitalize="none"
+            style={styles.textInputPostBody}
+            scrollEnabled={false}
+            multiline
+            {...bodyInputProps}
+          />
+          {cover && <Image source={cover} style={styles.cover} />}
+          <Text>{JSON.stringify(cover)}</Text>
+          <Button title="Select Cover Image" onPress={handleImage} />
+          <Button
+            title={isSaving ? 'Saving...' : post ? 'Save' : 'Post'}
+            onPress={save}
+          />
+        </ScrollView>
+      </View>
+    </KeyboardAvoidingView>
   );
 };
 

@@ -33,7 +33,7 @@ export const SignUp = ({ route }: Props) => {
     try {
       await auth.signup(email, password, name);
       if (isTryingToPost) {
-        navigation.navigate('AddNewPost');
+        navigation.navigate('PostAdd');
       } else {
         navigation.navigate('Home');
       }

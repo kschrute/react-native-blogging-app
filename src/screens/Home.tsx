@@ -21,7 +21,7 @@ export const Home = () => {
   console.log('insets', insets);
 
   const onPress = () => {
-    navigation.navigate('AddNewPost');
+    navigation.navigate('PostAdd');
   };
 
   return (

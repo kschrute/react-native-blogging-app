@@ -8,15 +8,15 @@ import {
   View,
 } from 'react-native';
 import moment from 'moment';
-import { PostItem } from '../types';
-import { Tile } from 'react-native-elements';
+// import { Tile } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 // import image from '../assets/images/profile-bkg.png';
 import { colorSecondary } from '../styles';
-import { Dimensions } from 'react-native';
+import { PostItem } from '../services/blog/types';
+// import { Dimensions } from 'react-native';
 // import transparent from '../assets/images/transparent.png';
-const transparent = require('../assets/images/transparent.png');
-const screenHeight = Dimensions.get('window').height;
+// const transparent = require('../assets/images/transparent.png');
+// const screenHeight = Dimensions.get('window').height;
 
 interface Props {
   post: PostItem;
@@ -40,7 +40,8 @@ export const PostTeaser = React.memo(({ post }: Props) => {
       onPress={onPress}
       activeOpacity={0.618}>
       <ImageBackground
-        source={cover ? { uri: cover } : transparent}
+        // source={cover ? { uri: cover } : transparent}
+        source={cover ? { uri: cover } : {}}
         style={styles.imageBackground}>
         <View style={styles.imageOverlay}>
           <Text numberOfLines={2} style={[styles.text, styles.title]}>
