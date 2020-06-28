@@ -1,27 +1,20 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { colorPrimary, textHeader, iconButton } from '../styles';
-// import { useStore } from '../store';
+import { colorBackground, colorPrimary, iconButton } from '../styles';
 import { Header, Posts } from '../components';
 import { Icon } from 'react-native-elements';
 import { useStore } from '../store';
 
 export const Home = () => {
   const navigation = useNavigation();
-  const { auth } = useStore();
-  const { isLoggedIn, user } = auth;
-  // const { posts } = blog;
-  // console.log('user', user);
-  // console.log('posts', posts);
-
   const insets = useSafeAreaInsets();
-  console.log('insets', insets);
+  const { auth } = useStore();
+  const { user } = auth;
 
   const onPress = () => {
-    return isLoggedIn
+    return user
       ? navigation.navigate('PostForm')
       : navigation.navigate('SignUp', { isTryingToPost: true });
   };
@@ -33,7 +26,6 @@ export const Home = () => {
           ...styles.container,
           paddingTop: insets.top,
         }}>
-        {/*<Posts header={renderHeader()} />*/}
         <Posts header={<Header />} />
         <View style={iconButton}>
           <Icon
@@ -53,9 +45,7 @@ export const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    // backgroundColor: 'red',
-    // paddingTop: 50,
+    backgroundColor: colorBackground,
   },
   scrollView: {
     padding: 20,

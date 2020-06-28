@@ -76,7 +76,6 @@ export const useBlogStore = () => {
     (async () => {
       await actions.load();
       return () => {
-        console.log('UNSUBSCRIBING...');
         return unsubscribe.current && unsubscribe.current();
       };
     })();

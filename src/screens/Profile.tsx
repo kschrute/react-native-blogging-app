@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAuthStore } from '../store/useAuthStore';
-import { Posts } from '../components';
-import { textHeader } from '../styles';
-import { ButtonLink } from '../components';
+import { ButtonLink, Posts } from '../components';
+import { colorBackground, textHeader } from '../styles';
 import { PROFILE, ScreenProps } from '.';
 
 export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
@@ -12,14 +11,10 @@ export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
 
   useEffect(() => {
     navigation.setOptions({
-      headerRight: () => (
-        <ButtonLink
-          title="Logout"
-          onPress={() => navigation.navigate('Logout')}
-        />
-      ),
+      title: name,
+      headerRight: () => <ButtonLink title="Logout" onPress={onLogout} />,
     });
-  }, [navigation]);
+  }, [navigation, name]);
 
   const header = (
     <View style={styles.header}>
@@ -27,11 +22,7 @@ export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
     </View>
   );
 
-  useEffect(() => {
-    navigation.setOptions({
-      title: name,
-    });
-  }, [navigation, name]);
+  const onLogout = () => navigation.navigate('Logout');
 
   return (
     <View style={styles.container}>
@@ -43,9 +34,7 @@ export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    backgroundColor: colorBackground,
   },
   header: {
     paddingHorizontal: 20,

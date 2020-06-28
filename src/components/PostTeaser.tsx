@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Image,
   ImageBackground,
   StyleSheet,
   Text,
@@ -18,15 +17,9 @@ interface Props {
 
 export const PostTeaser = React.memo(({ post }: Props) => {
   const navigation = useNavigation();
-  console.log(`Rendering post ${post.id}`);
-  // console.log('props', props);
-  // console.log('post', post);
-  const { title, author, body, cover, published } = post;
-  // const image = cover || transparent;
+  const { title, author, cover, published } = post;
 
-  const onPress = () => {
-    navigation.navigate('Post', { post });
-  };
+  const onPress = () => navigation.navigate('Post', { post });
 
   return (
     <TouchableOpacity
@@ -34,15 +27,12 @@ export const PostTeaser = React.memo(({ post }: Props) => {
       onPress={onPress}
       activeOpacity={0.618}>
       <ImageBackground
-        // source={cover ? { uri: cover } : transparent}
         source={cover ? { uri: cover } : {}}
         style={styles.imageBackground}>
         <View style={styles.imageOverlay}>
           <Text numberOfLines={2} style={[styles.text, styles.title]}>
             {title}
           </Text>
-          {/*<Text numberOfLines={2} style={[styles.text, styles.title]}>{title.toUpperCase()}</Text>*/}
-          {/*<Text numberOfLines={2} style={[styles.text]}>{body}</Text>*/}
           <View style={styles.published}>
             <Text style={[styles.text, styles.value]}>
               {author} on {moment(published.toDate()).format('LL')}
@@ -56,18 +46,10 @@ export const PostTeaser = React.memo(({ post }: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#f9c2ff',
-    // padding: 20,
-    // marginVertical: 10,
-    // marginHorizontal: 16,
     marginBottom: 10,
   },
   imageBackground: {
     backgroundColor: colorSecondary,
-    // height: screenHeight / 4,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // paddingVertical: 110,
   },
   imageOverlay: {
     flex: 1,
@@ -78,8 +60,7 @@ const styles = StyleSheet.create({
     paddingVertical: 110,
   },
   text: {
-    color: '#fff',
-    backgroundColor: 'transparent',
+    color: '#FFFFFF',
     textShadowColor: '#333',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 5,

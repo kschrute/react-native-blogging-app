@@ -8,10 +8,7 @@ export const Logout = ({ navigation }: ScreenProps<typeof LOGOUT>) => {
 
   useEffect(() => {
     (async () => {
-      try {
-        await auth.logout();
-      } catch (e) {}
-      // navigation.navigate('Home', { authenticated: false });
+      await auth.logout();
       navigation.navigate('Home');
     })();
   }, []);

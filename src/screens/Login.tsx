@@ -81,25 +81,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colorLightGray,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // padding: 20,
   },
-  // inner: {
-  //   flex: 1,
-  //   padding: 20,
-  //   // flex: 1,
-  //   // justifyContent: 'space-around',
-  //   justifyContent: 'center',
-  // },
   inner: {
-    // flex: 1,
     flexGrow: 1,
     flexDirection: 'column',
-    // alignItems: 'center',
-    // justifyContent: 'flex-end',
     justifyContent: 'center',
-    // backgroundColor: 'blue',
     padding: 20,
   },
   top: {
@@ -108,8 +94,6 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 1,
-    // backgroundColor: 'red',
     justifyContent: 'flex-end',
-    // paddingBottom: 20,
   },
 });

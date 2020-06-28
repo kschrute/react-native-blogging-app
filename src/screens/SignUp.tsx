@@ -10,10 +10,15 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTextInput } from '../hooks/useTextInput';
-import { colorSecondary, textError, textInput } from '../styles';
+import {
+  colorLightGray,
+  colorSecondary,
+  textError,
+  textInput,
+} from '../styles';
 import { useStore } from '../store';
 import { ButtonLink, ButtonRegular } from '../components';
-import { HOME, SIGN_UP, ScreenProps } from '.';
+import { HOME, ScreenProps, SIGN_UP } from '.';
 
 export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
   const { auth } = useStore();
@@ -25,19 +30,6 @@ export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
   const [name, nameInputProps] = useTextInput();
   const [email, emailInputProps] = useTextInput();
   const [password, passwordInputProps] = useTextInput();
-
-  // useEffect(() => {
-  //   navigation.setOptions({
-  //     headerLeft: () => (
-  //       <ButtonLink
-  //         title="Cancel"
-  //         onPress={() =>
-  //           isTryingToPost ? navigation.navigate('Home') : navigation.goBack()
-  //         }
-  //       />
-  //     ),
-  //   });
-  // }, [navigation, name]);
 
   const handleSignUp = async () => {
     try {
@@ -58,7 +50,6 @@ export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
-      // contentContainerStyle={{ flex: 1 }}
       keyboardVerticalOffset={88}
       enabled>
       <ScrollView
@@ -106,24 +97,12 @@ export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // padding: 20,
+    backgroundColor: colorLightGray,
   },
-  // inner: {
-  //   flex: 1,
-  //   padding: 20,
-  //   // justifyContent: 'space-around',
-  //   justifyContent: 'center',
-  // },
   inner: {
-    // flex: 1,
     flexGrow: 1,
     flexDirection: 'column',
-    // alignItems: 'center',
-    // justifyContent: 'flex-end',
     justifyContent: 'center',
-    // backgroundColor: 'blue',
     padding: 20,
   },
   top: {
@@ -132,8 +111,6 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 1,
-    // backgroundColor: 'red',
     justifyContent: 'flex-end',
-    // paddingBottom: 20,
   },
 });

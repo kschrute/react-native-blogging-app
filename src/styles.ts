@@ -4,6 +4,7 @@ export const colorPrimary = '#2196F3';
 export const colorSecondary = '#607D8B';
 export const colorPlaceholder = '#DDDDDD';
 export const colorLightGray = '#F9F9F9';
+export const colorBackground = '#FFFFFF';
 // export const colorSecondary = '#757575';
 // export const colorSecondary = '#BDBDBD';
 
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     alignSelf: 'stretch',
-    backgroundColor: 'white',
+    backgroundColor: colorBackground,
     borderRadius: 10,
     borderColor: colorPlaceholder,
     borderWidth: 1,

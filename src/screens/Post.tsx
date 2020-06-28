@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, Share, View, Image } from 'react-native';
+import { Image, ScrollView, Share, StyleSheet, Text, View } from 'react-native';
 import moment from 'moment';
 import { getPostLink, loadPost } from '../services/blog';
 import { useStore } from '../store';
-import { colorPlaceholder, colorSecondary, textHeader } from '../styles';
+import {
+  colorBackground,
+  colorPlaceholder,
+  colorSecondary,
+  textHeader,
+} from '../styles';
 import { PostItem } from '../services/blog/types';
 import { ButtonLink, ButtonRegular } from '../components';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -21,8 +26,7 @@ export const Post = ({ navigation, route }: ScreenProps<typeof POST>) => {
 
   useEffect(() => {
     navigation.setOptions({
-      title,
-      // headerRight: () => isMyPost && <Button title="Edit" onPress={onEdit} />,
+      title: `Read ${title}`,
       headerRight: () =>
         isMyPost && <ButtonLink title="Edit" onPress={onEdit} />,
     });
@@ -40,50 +44,14 @@ export const Post = ({ navigation, route }: ScreenProps<typeof POST>) => {
     navigation.navigate('PostForm', { post });
   };
 
-  // const onDelete = async () => {
-  //   if (!post) {
-  //     return;
-  //   }
-  //   Alert.alert(
-  //     'Delete This Post',
-  //     'Are you sure you want to delete this post? This actions is irreversible.',
-  //     [
-  //       { text: 'Cancel' },
-  //       {
-  //         text: 'Yes',
-  //         onPress: async () => {
-  //           await deletePost(post);
-  //           navigation.navigate('Home');
-  //         },
-  //       },
-  //     ],
-  //     { cancelable: true },
-  //   );
-  // };
-
   const onShare = async () => {
     if (!post) {
       return;
     }
-    try {
-      const result = await Share.share({
-        // message: 'React Native | A framework for building native apps using React',
-        title: 'Blog Post',
-        url: getPostLink(post),
-      });
-      console.log('result', result);
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
+    await Share.share({
+      title: 'Blog Post',
+      url: getPostLink(post),
+    });
   };
 
   return (
@@ -91,7 +59,6 @@ export const Post = ({ navigation, route }: ScreenProps<typeof POST>) => {
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
       style={styles.container}
-      // contentContainerStyle={styles.inner}
       contentContainerStyle={{
         ...styles.inner,
         paddingBottom: insets.bottom,
@@ -103,11 +70,8 @@ export const Post = ({ navigation, route }: ScreenProps<typeof POST>) => {
         </Text>
         {!!cover && <Image source={{ uri: cover }} style={styles.image} />}
         <Text style={styles.textBody}>{body}</Text>
-        {/*<Text>{JSON.stringify(post, null, 2)}</Text>*/}
       </View>
       <View style={styles.bottom}>
-        {/*{isMyPost && <Button title="Edit" onPress={onEdit} />}*/}
-        {/*{isMyPost && <Button title="Delete" onPress={onDelete} />}*/}
         <ButtonRegular color={colorSecondary} title="Share" onPress={onShare} />
       </View>
     </ScrollView>
@@ -117,37 +81,24 @@ export const Post = ({ navigation, route }: ScreenProps<typeof POST>) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    backgroundColor: colorBackground,
   },
   contentContainer: {
     padding: 20,
-    // flex: 1,
-    // backgroundColor: 'white',
-    // alignItems: 'center',
-    // justifyContent: 'center',
   },
   inner: {
-    // flex: 1,
     flexGrow: 1,
     flexDirection: 'column',
-    // backgroundColor: 'blue',
-    // alignItems: 'center',
     justifyContent: 'flex-end',
     padding: 20,
   },
   bottom: {
     flex: 1,
-    // backgroundColor: 'red',
     justifyContent: 'flex-end',
     paddingBottom: 20,
   },
   image: {
-    // width: '100%',
-    // height: '100%',
     height: 200,
-    // resizeMode: 'contain',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: colorPlaceholder,
