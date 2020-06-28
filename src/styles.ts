@@ -5,14 +5,11 @@ export const colorSecondary = '#607D8B';
 export const colorPlaceholder = '#DDDDDD';
 export const colorLightGray = '#F9F9F9';
 export const colorBackground = '#FFFFFF';
-// export const colorSecondary = '#757575';
-// export const colorSecondary = '#BDBDBD';
 
 const styles = StyleSheet.create({
   textHeader: {
     fontSize: 33,
     fontWeight: 'bold',
-    // marginBottom: 20,
   },
   textError: {
     color: 'red',

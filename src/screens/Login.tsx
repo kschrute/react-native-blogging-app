@@ -43,7 +43,6 @@ export const Login = ({ navigation }: ScreenProps<typeof LOGIN>) => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
-      // contentContainerStyle={{ flex: 1 }}
       keyboardVerticalOffset={88}
       enabled>
       <ScrollView
