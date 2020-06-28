@@ -1,29 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  Share,
-  Alert,
-  View,
-  Image,
-} from 'react-native';
-// import { Button } from 'react-native';
-import { Button } from 'react-native';
-// import Share from 'react-native-share';
-import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../index';
-import { deletePost, getPostLink, loadPost } from '../services/blog';
+import { ScrollView, StyleSheet, Text, Share, View, Image } from 'react-native';
+import moment from 'moment';
+import { getPostLink, loadPost } from '../services/blog';
 import { useStore } from '../store';
 import { colorPlaceholder, colorSecondary, textHeader } from '../styles';
 import { PostItem } from '../services/blog/types';
-import moment from 'moment';
 import { ButtonLink, ButtonRegular } from '../components';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { POST, ScreenProps } from '.';
 
-type Props = StackScreenProps<RootStackParamList, 'Post'>;
-
-export const Post = ({ navigation, route }: Props) => {
+export const Post = ({ navigation, route }: ScreenProps<typeof POST>) => {
   const { auth } = useStore();
   const insets = useSafeAreaInsets();
   const { user } = auth;
@@ -51,7 +37,7 @@ export const Post = ({ navigation, route }: Props) => {
   }, [id]);
 
   const onEdit = () => {
-    navigation.navigate('PostAdd', { post });
+    navigation.navigate('PostForm', { post });
   };
 
   // const onDelete = async () => {

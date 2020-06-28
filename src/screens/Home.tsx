@@ -5,9 +5,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { colorPrimary, textHeader, iconButton } from '../styles';
 // import { useStore } from '../store';
-import { Posts } from '../components/Posts';
+import { Header, Posts } from '../components';
 import { Icon } from 'react-native-elements';
-import { Header } from '../components/Header';
 import { useStore } from '../store';
 
 export const Home = () => {
@@ -23,7 +22,7 @@ export const Home = () => {
 
   const onPress = () => {
     return isLoggedIn
-      ? navigation.navigate('PostAdd')
+      ? navigation.navigate('PostForm')
       : navigation.navigate('SignUp', { isTryingToPost: true });
   };
 

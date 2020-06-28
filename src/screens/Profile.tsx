@@ -1,16 +1,25 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../index';
 import { useAuthStore } from '../store/useAuthStore';
-import { Posts } from '../components/Posts';
+import { Posts } from '../components';
 import { textHeader } from '../styles';
+import { ButtonLink } from '../components';
+import { PROFILE, ScreenProps } from '.';
 
-type Props = StackScreenProps<RootStackParamList, 'Post'>;
-
-export const Profile = ({ navigation }: Props) => {
+export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
   const { user } = useAuthStore();
   const { name } = user || {};
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <ButtonLink
+          title="Logout"
+          onPress={() => navigation.navigate('Logout')}
+        />
+      ),
+    });
+  }, [navigation]);
 
   const header = (
     <View style={styles.header}>

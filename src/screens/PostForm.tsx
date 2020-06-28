@@ -32,16 +32,16 @@ import ImageResizer from 'react-native-image-resizer';
 import storage from '@react-native-firebase/storage';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
-import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../index';
 import { PostData } from '../services/blog/types';
 import { Icon } from 'react-native-elements';
 import { deletePost } from '../services/blog';
 import { ButtonLink, ButtonRegular } from '../components';
+import { HOME, POST_FORM, ScreenProps } from '.';
 
-type Props = StackScreenProps<RootStackParamList, 'PostAdd'>;
-
-export const PostAdd = ({ navigation, route }: Props) => {
+export const PostForm = ({
+  navigation,
+  route,
+}: ScreenProps<typeof POST_FORM>) => {
   // const navigation = useNavigation();
   const { params } = route;
   const { post } = params || {};
@@ -62,16 +62,23 @@ export const PostAdd = ({ navigation, route }: Props) => {
   const [body, bodyInputProps] = useTextInput(post?.body);
 
   useEffect(() => {
+    let headerTitle = 'Add New Post';
+    // let headerLeftButton = (
+    //   <ButtonLink title="Cancel" onPress={() => navigation.goBack()} />
+    // );
+    let headerRightButton: Element | undefined;
+
     if (post) {
-      navigation.setOptions({
-        title: `Edit ${post.title}`,
-        headerRight: () =>
-          isMyPost && <ButtonLink title="Delete" onPress={onDelete} />,
-      });
-      // const source = { uri: post.cover };
-      // setCover(source);
+      headerTitle = `Edit ${post.title}`;
+      headerRightButton = <ButtonLink title="Delete" onPress={onDelete} />;
       setCover(post.cover);
     }
+
+    navigation.setOptions({
+      title: headerTitle,
+      // headerLeft: () => headerLeftButton,
+      headerRight: () => headerRightButton,
+    });
   }, [navigation, post]);
 
   // useFocusEffect(
@@ -180,7 +187,7 @@ export const PostAdd = ({ navigation, route }: Props) => {
           text: 'Yes',
           onPress: async () => {
             await deletePost(post);
-            navigation.navigate('Home');
+            navigation.navigate(HOME);
           },
         },
       ],

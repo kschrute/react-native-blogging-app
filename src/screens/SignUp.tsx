@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Button,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -13,13 +12,10 @@ import { useNavigation } from '@react-navigation/native';
 import { useTextInput } from '../hooks/useTextInput';
 import { colorSecondary, textError, textInput } from '../styles';
 import { useStore } from '../store';
-import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../index';
 import { ButtonLink, ButtonRegular } from '../components';
+import { HOME, SIGN_UP, ScreenProps } from '.';
 
-type Props = StackScreenProps<RootStackParamList, 'SignUp'>;
-
-export const SignUp = ({ route }: Props) => {
+export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
   const { auth } = useStore();
   const navigation = useNavigation();
   const { params } = route;
@@ -30,13 +26,26 @@ export const SignUp = ({ route }: Props) => {
   const [email, emailInputProps] = useTextInput();
   const [password, passwordInputProps] = useTextInput();
 
+  // useEffect(() => {
+  //   navigation.setOptions({
+  //     headerLeft: () => (
+  //       <ButtonLink
+  //         title="Cancel"
+  //         onPress={() =>
+  //           isTryingToPost ? navigation.navigate('Home') : navigation.goBack()
+  //         }
+  //       />
+  //     ),
+  //   });
+  // }, [navigation, name]);
+
   const handleSignUp = async () => {
     try {
       await auth.signup(email, password, name);
       if (isTryingToPost) {
-        navigation.navigate('PostAdd');
+        navigation.navigate('PostForm');
       } else {
-        navigation.navigate('Home');
+        navigation.navigate(HOME);
       }
     } catch (e) {
       setError(e.message);

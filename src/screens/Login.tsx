@@ -8,22 +8,18 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { useTextInput } from '../hooks/useTextInput';
 import {
   colorLightGray,
   colorSecondary,
   textError,
   textInput,
 } from '../styles';
+import { useTextInput } from '../hooks/useTextInput';
 import { useStore } from '../store';
-import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParamList } from '../index';
-import { Button } from 'react-native-elements';
 import { ButtonLink, ButtonRegular } from '../components';
+import { HOME, LOGIN, ScreenProps } from '.';
 
-type Props = StackScreenProps<RootStackParamList, 'Login'>;
-
-export const Login = ({ navigation }: Props) => {
+export const Login = ({ navigation }: ScreenProps<typeof LOGIN>) => {
   const { auth } = useStore();
 
   const [error, setError] = useState();
@@ -33,7 +29,7 @@ export const Login = ({ navigation }: Props) => {
   const handleLogin = async () => {
     try {
       await auth.login(email, password);
-      navigation.navigate('Home');
+      navigation.navigate(HOME);
     } catch (e) {
       setError(e.message);
     }

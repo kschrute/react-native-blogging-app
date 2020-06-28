@@ -8,15 +8,9 @@ import {
   View,
 } from 'react-native';
 import moment from 'moment';
-// import { Tile } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-// import image from '../assets/images/profile-bkg.png';
 import { colorSecondary } from '../styles';
 import { PostItem } from '../services/blog/types';
-// import { Dimensions } from 'react-native';
-// import transparent from '../assets/images/transparent.png';
-// const transparent = require('../assets/images/transparent.png');
-// const screenHeight = Dimensions.get('window').height;
 
 interface Props {
   post: PostItem;
