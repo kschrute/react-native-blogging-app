@@ -6,30 +6,31 @@ import { PostItem } from '../services/blog/types';
 
 interface Props {
   header: any;
-  // posts: PostData[];
+  showMyPosts?: boolean;
 }
 
-export const Posts = ({ header }: Props) => {
-  const { blog } = useStore();
+export const Posts = ({ header, showMyPosts = false }: Props) => {
+  const { auth, blog } = useStore();
+  const { user } = auth;
   const { posts } = blog;
 
   const renderItem = ({ item }: { item: PostItem }) => (
-    // <PostPreview post={item} />
     <PostTeaser post={item} />
   );
+
+  const data =
+    showMyPosts && user ? posts.filter((p) => p.author_id === user.id) : posts;
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={posts}
         ListHeaderComponent={header}
+        data={data}
+        keyExtractor={(post) => post.id}
         refreshing={blog.isLoading}
+        renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         onRefresh={blog.load}
-        // renderItem={({ item }) => <Item post={item} />}
-        // renderItem={({ item }) => <PostPreview post={item} />}
-        renderItem={renderItem}
-        keyExtractor={(post) => post.id}
       />
     </View>
   );

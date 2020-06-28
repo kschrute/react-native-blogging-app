@@ -5,7 +5,6 @@ import {
   createStackNavigator,
   StackScreenProps,
 } from '@react-navigation/stack';
-import { Demo } from './screens/Demo';
 import { Post } from './screens/Post';
 import { SignUp } from './screens/SignUp';
 import { Login } from './screens/Login';
@@ -16,6 +15,7 @@ import { Home } from './screens/Home';
 import { StoreProvider } from './store';
 import { Profile } from './screens/Profile';
 import { PostItem } from './services/blog/types';
+import { ButtonLink } from './components';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -26,10 +26,9 @@ export type RootStackParamList = {
     id?: string;
     post?: PostItem;
   };
-  SignUp: { isTryingToPost: boolean };
+  SignUp: { isTryingToPost: boolean } | undefined;
   Login: undefined;
   Logout: undefined;
-  Demo: undefined;
 };
 
 const Stack = createStackNavigator();
@@ -68,14 +67,14 @@ export default function App() {
             name="Post"
             component={Post}
             options={{
-              headerBackTitle: '',
+              headerBackTitle: ' ',
             }}
           />
           <Stack.Screen
             name="Profile"
             component={Profile}
             options={({ navigation }) => ({
-              headerBackTitle: '',
+              headerBackTitle: ' ',
               headerRight: () => (
                 <Button
                   title="Logout"
@@ -90,7 +89,7 @@ export default function App() {
             options={({ navigation }) => ({
               title: 'Add New Post',
               headerLeft: () => (
-                <Button title="Cancel" onPress={() => navigation.goBack()} />
+                <ButtonLink title="Cancel" onPress={() => navigation.goBack()} />
               ),
             })}
           />
@@ -128,23 +127,17 @@ export default function App() {
             //   ),
             // })}
           />
-          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{
+              headerBackTitle: ' ',
+            }}
+          />
           <Stack.Screen
             name="Logout"
             component={Logout}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Demo"
-            component={Demo}
-            options={{
-              title: 'Demo',
-              headerTintColor: '#4aa3ba',
-              headerShown: true,
-              headerStyle: {
-                backgroundColor: '#fff',
-              },
-            }}
           />
         </Stack.Navigator>
       </NavigationContainer>

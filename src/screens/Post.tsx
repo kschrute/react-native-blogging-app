@@ -1,27 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, Share, Alert } from 'react-native';
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  Share,
+  Alert,
+  View,
+  Image,
+} from 'react-native';
+// import { Button } from 'react-native';
 import { Button } from 'react-native';
 // import Share from 'react-native-share';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../index';
 import { deletePost, getPostLink, loadPost } from '../services/blog';
-import { PostItem } from '../types/PostItem';
 import { useStore } from '../store';
+import { colorPlaceholder, colorSecondary, textHeader } from '../styles';
+import { PostItem } from '../services/blog/types';
+import moment from 'moment';
+import { ButtonLink, ButtonRegular } from '../components';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type Props = StackScreenProps<RootStackParamList, 'Post'>;
 
 export const Post = ({ navigation, route }: Props) => {
   const { auth } = useStore();
+  const insets = useSafeAreaInsets();
   const { user } = auth;
   const { params } = route;
   const { id } = params || {};
   const [post, setPost] = useState<PostItem | undefined>(params.post);
-  const { title } = post || {};
+  const { title, body, cover, author, published } = post || {};
   const isMyPost = post && user && user.id === post.author_id;
 
   useEffect(() => {
     navigation.setOptions({
       title,
+      // headerRight: () => isMyPost && <Button title="Edit" onPress={onEdit} />,
+      headerRight: () =>
+        isMyPost && <ButtonLink title="Edit" onPress={onEdit} />,
     });
   }, [navigation, title]);
 
@@ -37,26 +54,26 @@ export const Post = ({ navigation, route }: Props) => {
     navigation.navigate('PostAdd', { post });
   };
 
-  const onDelete = async () => {
-    if (!post) {
-      return;
-    }
-    Alert.alert(
-      'Delete This Post',
-      'Are you sure you want to delete this post? This actions is irreversible.',
-      [
-        { text: 'Cancel' },
-        {
-          text: 'Yes',
-          onPress: async () => {
-            await deletePost(post);
-            navigation.navigate('Home');
-          },
-        },
-      ],
-      { cancelable: true },
-    );
-  };
+  // const onDelete = async () => {
+  //   if (!post) {
+  //     return;
+  //   }
+  //   Alert.alert(
+  //     'Delete This Post',
+  //     'Are you sure you want to delete this post? This actions is irreversible.',
+  //     [
+  //       { text: 'Cancel' },
+  //       {
+  //         text: 'Yes',
+  //         onPress: async () => {
+  //           await deletePost(post);
+  //           navigation.navigate('Home');
+  //         },
+  //       },
+  //     ],
+  //     { cancelable: true },
+  //   );
+  // };
 
   const onShare = async () => {
     if (!post) {
@@ -83,37 +100,30 @@ export const Post = ({ navigation, route }: Props) => {
     }
   };
 
-  // const onShare = async () => {
-  //   console.log('SHARE');
-  //   try {
-  //     const shareOptions = {
-  //       title: 'Share blog post',
-  //       failOnCancel: false,
-  //       urls: ['xxx', 'zzz'],
-  //     };
-  //     const res = await Share.open(shareOptions);
-  //     console.log('res', res);
-  //   } catch (e) {
-  //     console.log(e.message);
-  //   }
-  // };
-
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
       showsVerticalScrollIndicator={false}
       style={styles.container}
-      contentContainerStyle={styles.contentContainer}>
-      <Text>{JSON.stringify(post, null, 2)}</Text>
-      {isMyPost && <Button title="Edit" onPress={onEdit} />}
-      {isMyPost && <Button title="Delete" onPress={onDelete} />}
-      <Button title="Share" onPress={onShare} />
-      <Button
-        title="Back"
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
+      // contentContainerStyle={styles.inner}
+      contentContainerStyle={{
+        ...styles.inner,
+        paddingBottom: insets.bottom,
+      }}>
+      <View>
+        <Text style={textHeader}>{title}</Text>
+        <Text style={styles.textAuthor}>
+          {author} on {moment(published && published.toDate()).format('LL')}
+        </Text>
+        {!!cover && <Image source={{ uri: cover }} style={styles.image} />}
+        <Text style={styles.textBody}>{body}</Text>
+        {/*<Text>{JSON.stringify(post, null, 2)}</Text>*/}
+      </View>
+      <View style={styles.bottom}>
+        {/*{isMyPost && <Button title="Edit" onPress={onEdit} />}*/}
+        {/*{isMyPost && <Button title="Delete" onPress={onDelete} />}*/}
+        <ButtonRegular color={colorSecondary} title="Share" onPress={onShare} />
+      </View>
     </ScrollView>
   );
 };
@@ -126,9 +136,42 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   contentContainer: {
+    padding: 20,
     // flex: 1,
     // backgroundColor: 'white',
     // alignItems: 'center',
     // justifyContent: 'center',
+  },
+  inner: {
+    // flex: 1,
+    flexGrow: 1,
+    flexDirection: 'column',
+    // backgroundColor: 'blue',
+    // alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: 20,
+  },
+  bottom: {
+    flex: 1,
+    // backgroundColor: 'red',
+    justifyContent: 'flex-end',
+    paddingBottom: 20,
+  },
+  image: {
+    // width: '100%',
+    // height: '100%',
+    height: 200,
+    // resizeMode: 'contain',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: colorPlaceholder,
+  },
+  textAuthor: {
+    marginTop: 5,
+    marginBottom: 20,
+  },
+  textBody: {
+    fontSize: 18,
+    marginVertical: 20,
   },
 });

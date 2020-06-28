@@ -1,52 +1,44 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { colorPrimary, colorSecondary, header } from '../styles';
+import { colorPrimary, colorSecondary, textHeader } from '../styles';
 import { useStore } from '../store';
 import { Icon } from 'react-native-elements';
+import { ButtonLink } from './ButtonLink';
 
-interface Props {
-  // prop: string;
-}
-
-export const Header = (props: Props) => {
+export const Header = () => {
   const navigation = useNavigation();
   const { auth } = useStore();
   const { user } = auth;
 
   const onPressProfile = () => navigation.navigate('Profile');
+  const onPressLogin = () => navigation.navigate('Login');
   // const onPressProfile = () => navigation.navigate('Logout');
 
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <View style={styles.left}>
-          <Text style={header}>All Posts</Text>
+          <Text style={textHeader}>All Posts</Text>
           {/*<Text>Blog Posts</Text>*/}
         </View>
         <View style={styles.right}>
           {user && (
             <>
               <Icon
-                raised
-                reverse
-                name="user"
-                size={18}
+                // raised
+                // reverse
+                // name="user"
+                name="bars"
+                // size={18}
+                size={22}
                 type="font-awesome"
                 color={colorSecondary}
                 onPress={onPressProfile}
               />
             </>
           )}
-          {!user && (
-            <Button
-              title="Login"
-              onPress={() => {
-                // navigation.navigate('Login');
-                navigation.navigate('Profile');
-              }}
-            />
-          )}
+          {!user && <ButtonLink title="Login" onPress={onPressLogin} />}
         </View>
       </View>
       {/*
@@ -90,6 +82,6 @@ const styles = StyleSheet.create({
   right: {
     // alignContent: 'center',
     // alignSelf: 'center',
-    paddingRight: 10,
+    paddingRight: 20,
   },
 });

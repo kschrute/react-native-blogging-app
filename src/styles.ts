@@ -2,11 +2,13 @@ import { StyleSheet } from 'react-native';
 
 export const colorPrimary = '#2196F3';
 export const colorSecondary = '#607D8B';
+export const colorPlaceholder = '#DDDDDD';
+export const colorLightGray = '#F9F9F9';
 // export const colorSecondary = '#757575';
 // export const colorSecondary = '#BDBDBD';
 
 const styles = StyleSheet.create({
-  header: {
+  textHeader: {
     fontSize: 33,
     fontWeight: 'bold',
     // marginBottom: 20,
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     backgroundColor: 'white',
     borderRadius: 10,
-    borderColor: '#ddd',
+    borderColor: colorPlaceholder,
     borderWidth: 1,
     marginTop: 20,
     paddingVertical: 12,
@@ -39,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export const { iconButton, header, textError, textInput } = styles;
+export const { iconButton, textHeader, textError, textInput } = styles;

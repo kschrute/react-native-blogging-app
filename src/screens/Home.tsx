@@ -3,16 +3,17 @@ import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Button } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { colorPrimary, header, iconButton } from '../styles';
+import { colorPrimary, textHeader, iconButton } from '../styles';
 // import { useStore } from '../store';
 import { Posts } from '../components/Posts';
 import { Icon } from 'react-native-elements';
 import { Header } from '../components/Header';
+import { useStore } from '../store';
 
 export const Home = () => {
   const navigation = useNavigation();
-  // const { auth, blog } = useStore();
-  // const { user } = auth;
+  const { auth } = useStore();
+  const { isLoggedIn, user } = auth;
   // const { posts } = blog;
   // console.log('user', user);
   // console.log('posts', posts);
@@ -21,7 +22,9 @@ export const Home = () => {
   console.log('insets', insets);
 
   const onPress = () => {
-    navigation.navigate('PostAdd');
+    return isLoggedIn
+      ? navigation.navigate('PostAdd')
+      : navigation.navigate('SignUp', { isTryingToPost: true });
   };
 
   return (

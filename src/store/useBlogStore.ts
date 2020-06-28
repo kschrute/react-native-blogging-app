@@ -7,12 +7,12 @@ const LOADED = 'LOADED';
 
 interface State {
   isLoading: boolean;
-  posts: PostItem[] | null;
+  posts: PostItem[];
 }
 
 const initialState: State = {
   isLoading: false,
-  posts: null,
+  posts: [],
 };
 
 interface LoadingAction {
@@ -37,7 +37,7 @@ const reducer = (state: State, action: ActionType) => {
           const existingPost =
             state.posts &&
             state.posts.find(
-              (p) => p.id === post.id && p.published === post.published,
+              (p) => p.id === post.id && p.published.isEqual(post.published),
             );
           return existingPost || post;
         });

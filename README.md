@@ -13,5 +13,5 @@ Write a simple Blogging application using React Native:
 - [x] Cover image must be added using the device camera or accessing the camera roll (up to user choice). 
 - [x] Minimal UI/UX design is needed. You will not be marked by graphic design. However, do try to keep it as tidy as possible
 - [x] You may write your own custom backend or use any available 3rd party backend services (Firebase or similar).
-- [ ] The project should be demonstrated either on the iOS or Android platforms. This means that if you chose iOS, you wouldn’t need to show the project on any Android devices, but it will need to run well on all iOS phones, not just on one selected.
+- [x] The project should be demonstrated either on the iOS or Android platforms. This means that if you chose iOS, you wouldn’t need to show the project on any Android devices, but it will need to run well on all iOS phones, not just on one selected.
 - [ ] Write unit and e2e tests for bonus points.

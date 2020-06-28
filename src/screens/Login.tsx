@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import {
-  Button,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
+  View,
 } from 'react-native';
 import { useTextInput } from '../hooks/useTextInput';
-import { textError, textInput } from '../styles';
+import {
+  colorLightGray,
+  colorSecondary,
+  textError,
+  textInput,
+} from '../styles';
 import { useStore } from '../store';
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParamList } from '../index';
+import { Button } from 'react-native-elements';
+import { ButtonLink, ButtonRegular } from '../components';
 
 type Props = StackScreenProps<RootStackParamList, 'Login'>;
 
@@ -26,12 +33,13 @@ export const Login = ({ navigation }: Props) => {
   const handleLogin = async () => {
     try {
       await auth.login(email, password);
-      // navigation.navigate('Home', { authenticated: true });
       navigation.navigate('Home');
     } catch (e) {
       setError(e.message);
     }
   };
+
+  const onPressSignUp = () => navigation.navigate('SignUp');
 
   return (
     <KeyboardAvoidingView
@@ -44,25 +52,30 @@ export const Login = ({ navigation }: Props) => {
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.inner}>
-        {error && <Text style={textError}>{error}</Text>}
-        <TextInput
-          placeholder="Email"
-          autoCapitalize="none"
-          style={textInput}
-          {...emailInputProps}
-        />
-        <TextInput
-          secureTextEntry
-          placeholder="Password"
-          autoCapitalize="none"
-          style={textInput}
-          {...passwordInputProps}
-        />
-        <Button title="Login" onPress={handleLogin} />
-        <Button
-          title="Don't have an account? Sign Up"
-          onPress={() => navigation.navigate('SignUp')}
-        />
+        <View style={styles.top}>
+          {error && <Text style={textError}>{error}</Text>}
+          <TextInput
+            placeholder="Email"
+            autoCapitalize="none"
+            style={textInput}
+            {...emailInputProps}
+          />
+          <TextInput
+            secureTextEntry
+            placeholder="Password"
+            autoCapitalize="none"
+            style={textInput}
+            {...passwordInputProps}
+          />
+        </View>
+        <View style={styles.bottom}>
+          <ButtonRegular title="Login" onPress={handleLogin} />
+          <ButtonLink
+            color={colorSecondary}
+            title="Don't have an account? Sign Up"
+            onPress={onPressSignUp}
+          />
+        </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -71,21 +84,36 @@ export const Login = ({ navigation }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colorLightGray,
     // alignItems: 'center',
     // justifyContent: 'center',
     // padding: 20,
   },
-  innerContainer: {
-    flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // padding: 20,
-  },
+  // inner: {
+  //   flex: 1,
+  //   padding: 20,
+  //   // flex: 1,
+  //   // justifyContent: 'space-around',
+  //   justifyContent: 'center',
+  // },
   inner: {
-    flex: 1,
-    padding: 20,
     // flex: 1,
-    // justifyContent: 'space-around',
+    flexGrow: 1,
+    flexDirection: 'column',
+    // alignItems: 'center',
+    // justifyContent: 'flex-end',
     justifyContent: 'center',
+    // backgroundColor: 'blue',
+    padding: 20,
+  },
+  top: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  bottom: {
+    flex: 1,
+    // backgroundColor: 'red',
+    justifyContent: 'flex-end',
+    // paddingBottom: 20,
   },
 });
