@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
+  ActivityIndicator,
   Alert,
   Image,
   KeyboardAvoidingView,
@@ -31,7 +32,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { PostData } from '../services/blog/types';
 import { Icon } from 'react-native-elements';
 import { deletePost } from '../services/blog';
-import { ButtonLink, ButtonRegular } from '../components';
+import { ButtonLink, ButtonRegular, Loading } from '../components';
 import { HOME, POST_FORM, ScreenProps } from '.';
 
 export const PostForm = ({
@@ -43,7 +44,8 @@ export const PostForm = ({
   const { auth, blog } = useStore();
   const { user } = auth;
   const insets = useSafeAreaInsets();
-  const [isSaving, setIsSaving] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean | string>(false);
+  const [isLoadingImage, setIsLoadingImage] = useState(false);
   const [error, setError] = useState<string>();
   const [cover, setCover] = useState<string>();
   const [title, titleInputProps] = useTextInput(post?.title);
@@ -69,8 +71,10 @@ export const PostForm = ({
     try {
       invariant(user, 'You need to be logged in to add or edit posts');
       invariant(title, 'Post title is required');
+      invariant(!isLoading, 'Post is already being saved');
+      invariant(!isLoadingImage, 'Please wait till your cover image is loaded');
 
-      setIsSaving(true);
+      setIsLoading('Saving...');
 
       let url = post ? post.cover : '';
       if (cover && post?.cover !== cover) {
@@ -103,15 +107,19 @@ export const PostForm = ({
       } else {
         await blog.add(data);
       }
-      setIsSaving(false);
-      navigation.navigate('Home');
+      setIsLoading(false);
+      navigation.navigate(HOME);
     } catch (e) {
-      setIsSaving(false);
+      setIsLoading(false);
       setError(e.message);
     }
   };
 
   const handleImage = async () => {
+    if (isLoadingImage) {
+      return;
+    }
+    setIsLoadingImage(true);
     ImagePicker.showImagePicker(
       {
         title: 'Select post cover image',
@@ -121,11 +129,14 @@ export const PostForm = ({
         },
       },
       (response) => {
-        if (response.error) {
-          setError(response.error);
-        } else {
-          setCover(response.uri);
+        setIsLoadingImage(false);
+        if (response.didCancel) {
+          return;
         }
+        if (response.error) {
+          return setError(response.error);
+        }
+        setCover(response.uri);
       },
     );
   };
@@ -142,7 +153,9 @@ export const PostForm = ({
         {
           text: 'Yes',
           onPress: async () => {
+            setIsLoading('Deleting...');
             await deletePost(post);
+            setIsLoading(false);
             navigation.navigate(HOME);
           },
         },
@@ -165,6 +178,10 @@ export const PostForm = ({
           paddingBottom: insets.bottom,
         }}
         showsVerticalScrollIndicator={false}>
+        <Loading
+          state={(isLoading as string) || 'Saving....'}
+          isLoading={!!isLoading}
+        />
         <View>
           {error && <Text style={textError}>{error}</Text>}
           <TextInput
@@ -182,6 +199,13 @@ export const PostForm = ({
             {...bodyInputProps}
           />
           <TouchableOpacity style={styles.cover} onPress={handleImage}>
+            {isLoadingImage && (
+              <ActivityIndicator
+                color={colorLightGray}
+                size="large"
+                style={styles.indicator}
+              />
+            )}
             {!!cover && <Image source={{ uri: cover }} style={styles.image} />}
             {!cover && (
               <View style={styles.coverSelector}>
@@ -198,7 +222,8 @@ export const PostForm = ({
         </View>
         <View style={styles.bottom}>
           <ButtonRegular
-            title={isSaving ? 'Saving...' : post ? 'Save' : 'Post'}
+            title={isLoading ? 'Saving...' : post ? 'Save' : 'Post'}
+            disabled={!!isLoading || isLoadingImage}
             onPress={save}
           />
         </View>
@@ -223,6 +248,14 @@ const styles = StyleSheet.create({
   cover: {
     flex: 1,
     marginVertical: 20,
+  },
+  indicator: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1,
   },
   image: {
     width: '100%',

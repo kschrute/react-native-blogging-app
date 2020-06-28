@@ -18,7 +18,7 @@ import {
 } from '../styles';
 import { useStore } from '../store';
 import { ButtonLink, ButtonRegular } from '../components';
-import { HOME, ScreenProps, SIGN_UP } from '.';
+import { HOME, LOGIN, POST_FORM, ScreenProps, SIGN_UP } from '.';
 
 export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
   const { auth } = useStore();
@@ -30,21 +30,24 @@ export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
   const [name, nameInputProps] = useTextInput();
   const [email, emailInputProps] = useTextInput();
   const [password, passwordInputProps] = useTextInput();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignUp = async () => {
+  const signup = async () => {
+    setIsLoading(true);
     try {
       await auth.signup(email, password, name);
       if (isTryingToPost) {
-        navigation.navigate('PostForm');
+        navigation.navigate(POST_FORM);
       } else {
         navigation.navigate(HOME);
       }
     } catch (e) {
       setError(e.message);
     }
+    setIsLoading(false);
   };
 
-  const onPressLogin = () => navigation.navigate('Login');
+  const login = () => navigation.navigate(LOGIN);
 
   return (
     <KeyboardAvoidingView
@@ -82,11 +85,15 @@ export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
           />
         </View>
         <View style={styles.bottom}>
-          <ButtonRegular title="Sign Up" onPress={handleSignUp} />
+          <ButtonRegular
+            title="Sign Up"
+            disabled={isLoading}
+            onPress={signup}
+          />
           <ButtonLink
             color={colorSecondary}
             title="Already have an account? Login"
-            onPress={onPressLogin}
+            onPress={login}
           />
         </View>
       </ScrollView>

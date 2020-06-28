@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { useAuthStore } from '../store/useAuthStore';
-import { ButtonLink, Posts } from '../components';
+import { ButtonLink, Loading, Posts } from '../components';
 import { colorBackground, textHeader } from '../styles';
-import { PROFILE, ScreenProps } from '.';
+import { HOME, PROFILE, ScreenProps } from '.';
+import { useStore } from '../store';
 
 export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
-  const { user } = useAuthStore();
+  const { auth } = useStore();
+  const { user } = auth;
   const { name } = user || {};
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     navigation.setOptions({
@@ -22,10 +24,16 @@ export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
     </View>
   );
 
-  const onLogout = () => navigation.navigate('Logout');
+  const onLogout = async () => {
+    setIsLoading(true);
+    await auth.logout();
+    setIsLoading(false);
+    navigation.navigate(HOME);
+  };
 
   return (
     <View style={styles.container}>
+      <Loading state={'Logging out...'} isLoading={isLoading} />
       <Posts header={header} showMyPosts />
     </View>
   );

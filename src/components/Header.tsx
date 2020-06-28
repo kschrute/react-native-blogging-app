@@ -5,14 +5,15 @@ import { colorSecondary, textHeader } from '../styles';
 import { useStore } from '../store';
 import { Icon } from 'react-native-elements';
 import { ButtonLink } from './ButtonLink';
+import { LOGIN, PROFILE } from '../screens';
 
 export const Header = () => {
   const navigation = useNavigation();
   const { auth } = useStore();
   const { user } = auth;
 
-  const onPressProfile = () => navigation.navigate('Profile');
-  const onPressLogin = () => navigation.navigate('Login');
+  const onPressProfile = () => navigation.navigate(PROFILE);
+  const onPressLogin = () => navigation.navigate(LOGIN);
 
   return (
     <View style={styles.container}>

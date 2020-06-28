@@ -6,6 +6,7 @@ import { colorBackground, colorPrimary, iconButton } from '../styles';
 import { Header, Posts } from '../components';
 import { Icon } from 'react-native-elements';
 import { useStore } from '../store';
+import { POST_FORM, SIGN_UP } from '.';
 
 export const Home = () => {
   const navigation = useNavigation();
@@ -13,10 +14,12 @@ export const Home = () => {
   const { auth } = useStore();
   const { user } = auth;
 
+  console.log('user', user);
+
   const onPress = () => {
     return user
-      ? navigation.navigate('PostForm')
-      : navigation.navigate('SignUp', { isTryingToPost: true });
+      ? navigation.navigate(POST_FORM)
+      : navigation.navigate(SIGN_UP, { isTryingToPost: true });
   };
 
   return (

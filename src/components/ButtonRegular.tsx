@@ -6,10 +6,16 @@ import { StyleSheet } from 'react-native';
 interface Props {
   title: string;
   color?: string;
+  disabled?: boolean;
   onPress: () => any;
 }
 
-export const ButtonRegular = ({ title, color, onPress }: Props) => {
+export const ButtonRegular = ({
+  title,
+  color,
+  disabled = false,
+  onPress,
+}: Props) => {
   return (
     <Button
       title={title}
@@ -17,6 +23,7 @@ export const ButtonRegular = ({ title, color, onPress }: Props) => {
         backgroundColor: color || colorPrimary,
       }}
       containerStyle={styles.containerStyle}
+      disabled={disabled}
       onPress={onPress}
     />
   );

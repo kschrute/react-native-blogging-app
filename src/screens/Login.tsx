@@ -17,25 +17,27 @@ import {
 import { useTextInput } from '../hooks/useTextInput';
 import { useStore } from '../store';
 import { ButtonLink, ButtonRegular } from '../components';
-import { HOME, LOGIN, ScreenProps } from '.';
+import { HOME, LOGIN, ScreenProps, SIGN_UP } from '.';
 
 export const Login = ({ navigation }: ScreenProps<typeof LOGIN>) => {
   const { auth } = useStore();
-
   const [error, setError] = useState();
   const [email, emailInputProps] = useTextInput();
   const [password, passwordInputProps] = useTextInput();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = async () => {
+  const login = async () => {
+    setIsLoading(true);
     try {
       await auth.login(email, password);
       navigation.navigate(HOME);
     } catch (e) {
       setError(e.message);
     }
+    setIsLoading(false);
   };
 
-  const onPressSignUp = () => navigation.navigate('SignUp');
+  const signUp = () => navigation.navigate(SIGN_UP);
 
   return (
     <KeyboardAvoidingView
@@ -65,11 +67,15 @@ export const Login = ({ navigation }: ScreenProps<typeof LOGIN>) => {
           />
         </View>
         <View style={styles.bottom}>
-          <ButtonRegular title="Login" onPress={handleLogin} />
+          <ButtonRegular
+            title="Login"
+            disabled={isLoading}
+            onPress={login}
+          />
           <ButtonLink
             color={colorSecondary}
             title="Don't have an account? Sign Up"
-            onPress={onPressSignUp}
+            onPress={signUp}
           />
         </View>
       </ScrollView>

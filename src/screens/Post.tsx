@@ -12,7 +12,7 @@ import {
 import { PostItem } from '../services/blog/types';
 import { ButtonLink, ButtonRegular } from '../components';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { POST, ScreenProps } from '.';
+import { POST, POST_FORM, ScreenProps } from '.';
 
 export const Post = ({ navigation, route }: ScreenProps<typeof POST>) => {
   const { auth } = useStore();
@@ -41,7 +41,7 @@ export const Post = ({ navigation, route }: ScreenProps<typeof POST>) => {
   }, [id]);
 
   const onEdit = () => {
-    navigation.navigate('PostForm', { post });
+    navigation.navigate(POST_FORM, { post });
   };
 
   const onShare = async () => {

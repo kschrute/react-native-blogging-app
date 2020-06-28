@@ -5,7 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Post } from './screens/Post';
 import { SignUp } from './screens/SignUp';
 import { Login } from './screens/Login';
-import { Logout } from './screens/Logout';
 import { PostForm } from './screens/PostForm';
 import { Home } from './screens/Home';
 import { StoreProvider } from './store';
@@ -13,7 +12,6 @@ import { Profile } from './screens/Profile';
 import {
   HOME,
   LOGIN,
-  LOGOUT,
   POST,
   POST_FORM,
   PROFILE,
@@ -40,7 +38,6 @@ export default function App() {
           <Stack.Screen name={POST_FORM} component={PostForm} />
           <Stack.Screen name={SIGN_UP} component={SignUp} />
           <Stack.Screen name={LOGIN} component={Login} />
-          <Stack.Screen name={LOGOUT} component={Logout} {...noHeader} />
         </Stack.Navigator>
       </NavigationContainer>
     </StoreProvider>
