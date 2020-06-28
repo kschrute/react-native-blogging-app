@@ -76,7 +76,7 @@ export default function App() {
             options={({ navigation }) => ({
               headerBackTitle: ' ',
               headerRight: () => (
-                <Button
+                <ButtonLink
                   title="Logout"
                   onPress={() => navigation.navigate('Logout')}
                 />
@@ -89,7 +89,10 @@ export default function App() {
             options={({ navigation }) => ({
               title: 'Add New Post',
               headerLeft: () => (
-                <ButtonLink title="Cancel" onPress={() => navigation.goBack()} />
+                <ButtonLink
+                  title="Cancel"
+                  onPress={() => navigation.goBack()}
+                />
               ),
             })}
           />
