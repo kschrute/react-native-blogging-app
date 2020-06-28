@@ -66,11 +66,7 @@ export const Login = ({ navigation }: ScreenProps<typeof LOGIN>) => {
           />
         </View>
         <View style={styles.bottom}>
-          <ButtonRegular
-            title="Login"
-            disabled={isLoading}
-            onPress={login}
-          />
+          <ButtonRegular title="Login" disabled={isLoading} onPress={login} />
           <ButtonLink
             color={colorSecondary}
             title="Don't have an account? Sign Up"

@@ -9,14 +9,7 @@ import { PostForm } from './screens/PostForm';
 import { Home } from './screens/Home';
 import { StoreProvider } from './store';
 import { Profile } from './screens/Profile';
-import {
-  HOME,
-  LOGIN,
-  POST,
-  POST_FORM,
-  PROFILE,
-  SIGN_UP,
-} from './screens';
+import { HOME, LOGIN, POST, POST_FORM, PROFILE, SIGN_UP } from './screens';
 
 const Stack = createStackNavigator();
 const noHeader = { options: { headerShown: false } };
