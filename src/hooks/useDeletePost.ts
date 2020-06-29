@@ -1,13 +1,14 @@
 import { PostItem } from '../services/blog/types';
-import { deletePost } from '../services/blog';
 import { useState } from 'react';
+import { useStore } from '../store';
 
 export const useDeletePost = () => {
+  const { blog } = useStore();
   const [isDeleting, setIsDeleting] = useState(false);
 
   const performDelete = async (post: PostItem) => {
     setIsDeleting(true);
-    await deletePost(post);
+    await blog.delete(post);
     setIsDeleting(false);
   };
 

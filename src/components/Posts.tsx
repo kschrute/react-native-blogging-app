@@ -28,6 +28,7 @@ export const Posts = ({ header, showMyPosts = false }: Props) => {
         refreshing={blog.isLoading}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
+        onEndReached={blog.loadMore}
         onRefresh={blog.load}
       />
     </View>
