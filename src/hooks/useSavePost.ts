@@ -1,19 +1,31 @@
 import invariant from 'invariant';
 import ImageResizer from 'react-native-image-resizer';
-import { v4 as uuidv4 } from 'uuid';
-import storage from '@react-native-firebase/storage';
-import { PostData, PostItem } from '../services/blog/types';
-import firestore from '@react-native-firebase/firestore';
-import { HOME } from '../screens';
-import { useStore } from '../store';
 import { useNavigation } from '@react-navigation/native';
+import storage from '@react-native-firebase/storage';
+import firestore from '@react-native-firebase/firestore';
+import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
+import { useStore } from '../store';
+import { HOME } from '../screens';
+import { PostData, PostItem } from '../services/blog/types';
 
 export const useSavePost = () => {
   const navigation = useNavigation();
   const [isSaving, setIsSaving] = useState(false);
   const { auth, blog } = useStore();
   const { user } = auth;
+
+  const resizeImage = (image: string) =>
+    ImageResizer.createResizedImage(image, 600, 600, 'JPEG', 60);
+
+  const uploadImage = async (image: string) => {
+    const resizedImage = await resizeImage(image);
+    const ext = image.split('.').pop();
+    const filename = `${uuidv4()}.${ext}`;
+    const file = storage().ref(`covers/${filename}`);
+    await file.putFile(resizedImage.uri);
+    return await file.getDownloadURL();
+  };
 
   const savePost = async (
     title: string,
@@ -29,19 +41,7 @@ export const useSavePost = () => {
       setIsSaving(true);
       let url = post ? post.cover : '';
       if (cover && post?.cover !== cover) {
-        const resizedImage = await ImageResizer.createResizedImage(
-          cover,
-          600,
-          600,
-          'JPEG',
-          60,
-        );
-
-        const ext = cover.split('.').pop();
-        const filename = `${uuidv4()}.${ext}`;
-        const file = storage().ref(`covers/${filename}`);
-        await file.putFile(resizedImage.uri);
-        url = await file.getDownloadURL();
+        url = await uploadImage(cover);
       }
 
       const data: PostData = {
