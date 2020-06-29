@@ -10,7 +10,7 @@ import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
 import { colorSecondary } from '../../styles';
 import { PostItem } from '../../services/blog/types';
-import { POST } from '../../screens';
+import { POST } from '../../screens/types';
 
 interface Props {
   post: PostItem;

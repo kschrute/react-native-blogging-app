@@ -82,6 +82,7 @@ export const useBlogStore = () => {
         const posts = await loadPosts();
         dispatch({ type: LOADED, posts });
       },
+
       loadMore: async () => {
         if (state.isLoading || !state.posts.length) {
           return;
@@ -91,23 +92,27 @@ export const useBlogStore = () => {
         const posts = await loadPosts(lastPost.id);
         dispatch({ type: LOADED_MORE, posts });
       },
+
+      add: async (data: PostData) => {
+        await addPost(data);
+        await actions.load();
+      },
+
+      delete: async (post: PostItem) => {
+        await deletePost(post);
+        await actions.load();
+      },
+
+      update: async (post: PostItem, data: PostData) => {
+        await updatePost(post, data);
+        await actions.load();
+      },
+
       subscribe: async () => {
         const callback = (posts: PostItem[]) =>
           dispatch({ type: LOADED, posts });
         unsubscribe.current && unsubscribe.current();
         unsubscribe.current = await subscribeToPosts(callback);
-      },
-      add: async (data: PostData) => {
-        await addPost(data);
-        await actions.load();
-      },
-      delete: async (post: PostItem) => {
-        await deletePost(post);
-        await actions.load();
-      },
-      update: async (post: PostItem, data: PostData) => {
-        await updatePost(post, data);
-        await actions.load();
       },
     }),
     [state],

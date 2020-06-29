@@ -5,7 +5,7 @@ import { useStore } from '../store';
 import { PostItem } from '../services/blog/types';
 import { ButtonLink, Loading } from '../components';
 import { Details } from '../components/Posts/Details';
-import { POST, POST_FORM, ScreenProps } from '.';
+import { POST, POST_FORM, ScreenProps } from './types';
 
 export const Post = ({ navigation, route }: ScreenProps<typeof POST>) => {
   const { auth } = useStore();

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ButtonLink, Loading, Posts } from '../components';
-import { container, textHeader } from '../styles';
-import { HOME, PROFILE, ScreenProps } from '.';
 import { useStore } from '../store';
+import { container, textHeader } from '../styles';
+import { HOME, PROFILE, ScreenProps } from './types';
 
 export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
   const { auth } = useStore();

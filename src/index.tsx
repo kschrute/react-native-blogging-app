@@ -2,14 +2,16 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Post } from './screens/Post';
-import { SignUp } from './screens/SignUp';
-import { Login } from './screens/Login';
-import { PostForm } from './screens/PostForm';
-import { Home } from './screens/Home';
+import { Home, Login, Post, PostForm, Profile, SignUp } from './screens';
+import {
+  HOME,
+  LOGIN,
+  POST,
+  POST_FORM,
+  PROFILE,
+  SIGN_UP,
+} from './screens/types';
 import { StoreProvider } from './store';
-import { Profile } from './screens/Profile';
-import { HOME, LOGIN, POST, POST_FORM, PROFILE, SIGN_UP } from './screens';
 
 const Stack = createStackNavigator();
 const noHeader = { options: { headerShown: false } };

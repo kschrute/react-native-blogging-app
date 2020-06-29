@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
 import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
-import { User } from '../types';
 
 const LOGIN = 'LOGIN';
 const LOGOUT = 'LOGOUT';
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
+}
 
 interface State {
   isLoggedIn: boolean | null;

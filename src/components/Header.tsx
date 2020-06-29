@@ -5,7 +5,7 @@ import { colorSecondary, textHeader } from '../styles';
 import { useStore } from '../store';
 import { Icon } from 'react-native-elements';
 import { ButtonLink } from './ButtonLink';
-import { LOGIN, PROFILE } from '../screens';
+import { LOGIN, PROFILE } from '../screens/types';
 
 export const Header = () => {
   const navigation = useNavigation();

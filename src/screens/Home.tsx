@@ -1,12 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { Icon } from 'react-native-elements';
-import { colorPrimary, container, iconButton } from '../styles';
 import { Header, Posts } from '../components';
 import { useStore } from '../store';
-import { POST_FORM, SIGN_UP } from '.';
+import { colorPrimary, container, iconButton } from '../styles';
+import { POST_FORM, SIGN_UP } from './types';
 
 export const Home = () => {
   const navigation = useNavigation();

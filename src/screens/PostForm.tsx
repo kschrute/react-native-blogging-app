@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import 'react-native-get-random-values';
 import { ButtonLink, Loading } from '../components';
-import { POST_FORM, ScreenProps } from '.';
 import { Form } from '../components/Posts/Form';
 import { deleteConfirmation } from '../lib';
 import { useDeletePost } from '../hooks/useDeletePost';
+import { POST_FORM, ScreenProps } from './types';
 
 export const PostForm = ({
   navigation,

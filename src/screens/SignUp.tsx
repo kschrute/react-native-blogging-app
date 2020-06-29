@@ -19,7 +19,7 @@ import {
 } from '../styles';
 import { useStore } from '../store';
 import { ButtonLink, ButtonRegular } from '../components';
-import { LOGIN, SIGN_UP, ScreenProps } from '.';
+import { LOGIN, SIGN_UP, ScreenProps } from './types';
 
 export const SignUp = ({ route, navigation }: ScreenProps<typeof SIGN_UP>) => {
   const { auth } = useStore();
