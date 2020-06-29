@@ -15,7 +15,8 @@ import { StoreProvider } from './store';
 
 const Stack = createStackNavigator();
 const noHeader = { options: { headerShown: false } };
-const linkingConfig = {
+const screenOptions = { headerBackTitle: ' ' };
+const linkingOptions = {
   prefixes: ['toptalbloggingapp://'],
   config: {
     Post: 'post/:id',
@@ -25,8 +26,8 @@ const linkingConfig = {
 const App = () => {
   return (
     <StoreProvider>
-      <NavigationContainer linking={linkingConfig}>
-        <Stack.Navigator screenOptions={{ headerBackTitle: ' ' }} mode="modal">
+      <NavigationContainer linking={linkingOptions}>
+        <Stack.Navigator screenOptions={screenOptions} mode="modal">
           <Stack.Screen name={HOME} component={Home} {...noHeader} />
           <Stack.Screen name={POST} component={Post} />
           <Stack.Screen name={PROFILE} component={Profile} />
