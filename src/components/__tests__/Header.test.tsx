@@ -3,7 +3,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { Header } from '../Header';
 import navigation from '@react-navigation/native';
-import { mockStore } from '../../../__mocks__/store';
+import { mockStore } from '../../__mocks__/store';
 
 jest.mock('@react-native-firebase/auth', () => jest.fn());
 jest.mock('@react-native-firebase/firestore', () => jest.fn());
