@@ -13,13 +13,8 @@ type RootStackParamList = {
   [LOGIN]: undefined;
   [PROFILE]: undefined;
   [SIGN_UP]: { isTryingToPost: boolean } | undefined;
-  [POST]: {
-    id?: string;
-    post?: PostItem;
-  };
-  [POST_FORM]: {
-    post?: PostItem;
-  };
+  [POST]: { id?: string; post?: PostItem };
+  [POST_FORM]: { post?: PostItem } | undefined;
 };
 
 export type ScreenProps<T extends keyof RootStackParamList> = StackScreenProps<

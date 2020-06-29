@@ -30,12 +30,13 @@ export const PostForm = ({
   }, [navigation, post]);
 
   const onPressDelete = () => deleteConfirmation(handleDelete);
-  const handleDelete = () => post && performDelete(post) && navigation.pop(2);
+  const handleDelete = () => post && performDelete(post) && goBack();
+  const goBack = () => navigation.pop(2);
 
   return (
     <>
       <Loading state="Deleting..." isLoading={isDeleting} />
-      <Form post={post} />
+      <Form post={post} onSaved={goBack} />
     </>
   );
 };

@@ -27,19 +27,17 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon } from 'react-native-elements';
 import 'react-native-get-random-values';
 import { ButtonRegular, Loading } from '..';
-import { useNavigation } from '@react-navigation/native';
 import { useSavePost } from '../../hooks/useSavePost';
 import { selectImage } from '../../lib';
-import { HOME, PROFILE } from '../../screens';
 import { PostItem } from '../../services/blog/types';
 
 interface Props {
   post: PostItem | undefined;
+  onSaved: () => void;
 }
 
-export const Form = ({ post }: Props) => {
+export const Form = ({ post, onSaved }: Props) => {
   const { isSaving, savePost } = useSavePost();
-  const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const [error, setError] = useState<string>();
@@ -51,7 +49,7 @@ export const Form = ({ post }: Props) => {
     try {
       invariant(!isLoadingImage, 'Please wait till your cover image is loaded');
       await savePost(title, body, cover, post);
-      navigation.navigate(post ? PROFILE : HOME);
+      onSaved();
     } catch (e) {
       setError(e.message);
     }

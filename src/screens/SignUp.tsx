@@ -8,7 +8,6 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { useTextInput } from '../hooks/useTextInput';
 import {
   colorLightGray,
@@ -20,11 +19,10 @@ import {
 } from '../styles';
 import { useStore } from '../store';
 import { ButtonLink, ButtonRegular } from '../components';
-import { HOME, LOGIN, POST_FORM, ScreenProps, SIGN_UP } from '.';
+import { LOGIN, SIGN_UP, ScreenProps } from '.';
 
-export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
+export const SignUp = ({ route, navigation }: ScreenProps<typeof SIGN_UP>) => {
   const { auth } = useStore();
-  const navigation = useNavigation();
   const { params } = route;
   const { isTryingToPost } = params || {};
 
@@ -38,11 +36,7 @@ export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
     setIsLoading(true);
     try {
       await auth.signup(email, password, name);
-      if (isTryingToPost) {
-        navigation.navigate(POST_FORM);
-      } else {
-        navigation.navigate(HOME);
-      }
+      navigation.pop(2);
     } catch (e) {
       setError(e.message);
     }
