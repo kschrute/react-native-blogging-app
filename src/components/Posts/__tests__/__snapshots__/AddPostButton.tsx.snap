@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddPostButton renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "bottom": 30,
+      "position": "absolute",
+      "right": 30,
+      "shadowColor": "black",
+      "shadowOffset": Object {
+        "height": 1,
+        "width": 1,
+      },
+      "shadowOpacity": 0.33,
+      "shadowRadius": 3,
+      "zIndex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderRadius": 28,
+        "height": 52,
+        "margin": 7,
+        "overflow": "hidden",
+        "shadowColor": "rgba(0,0,0, .4)",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 1,
+        },
+        "shadowOpacity": 1,
+        "shadowRadius": 1,
+        "width": 52,
+      }
+    }
+  >
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#2196F3",
+            "borderRadius": 28,
+            "height": 52,
+            "justifyContent": "center",
+            "width": 52,
+          }
+        }
+      >
+        <Text
+          allowFontScaling={false}
+          brand={false}
+          solid={false}
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 24,
+              },
+              Object {
+                "backgroundColor": "transparent",
+              },
+              Object {
+                "fontFamily": "FontAwesome",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+          testID="iconIcon"
+        >
+          
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

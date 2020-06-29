@@ -19,7 +19,7 @@ import {
 import { useTextInput } from '../hooks/useTextInput';
 import { useStore } from '../store';
 import { ButtonLink, ButtonRegular } from '../components';
-import { HOME, LOGIN, SIGN_UP, ScreenProps } from './types';
+import { HOME, LOGIN, ScreenProps, SIGN_UP } from './types';
 
 export const Login = ({ navigation }: ScreenProps<typeof LOGIN>) => {
   const { auth } = useStore();

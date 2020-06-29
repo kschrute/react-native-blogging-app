@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { ButtonLink, Loading, Posts } from '../components';
+import { ButtonLink, List, Loading } from '../components';
 import { useStore } from '../store';
 import { container, textHeader } from '../styles';
 import { HOME, PROFILE, ScreenProps } from './types';
@@ -34,7 +34,7 @@ export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
   return (
     <View style={container}>
       <Loading state={'Logging out...'} isLoading={isLoading} />
-      <Posts header={header} showMyPosts />
+      <List header={header} showMyPosts />
     </View>
   );
 };

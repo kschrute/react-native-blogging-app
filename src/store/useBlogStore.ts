@@ -8,17 +8,21 @@ import {
 } from '../services/blog';
 import { PostData, PostItem } from '../services/blog/types';
 
+const limit = 25;
+
 const LOADING = 'LOADING';
 const LOADED = 'LOADED';
 const LOADED_MORE = 'LOADED_MORE';
 
 interface State {
   isLoading: boolean;
+  hasMore: boolean;
   posts: PostItem[];
 }
 
 const initialState: State = {
   isLoading: false,
+  hasMore: true,
   posts: [],
 };
 
@@ -45,6 +49,7 @@ const reducer = (state: State, action: ActionType) => {
     }
     case LOADED: {
       const { posts } = action;
+      const hasMore = !!(posts.length && posts.length === limit);
       if (state.posts) {
         const loaded = posts.map((post) => {
           const existingPost =
@@ -54,17 +59,19 @@ const reducer = (state: State, action: ActionType) => {
             );
           return existingPost || post;
         });
-        return { ...state, isLoading: false, posts: loaded };
+        return { ...state, isLoading: false, hasMore, posts: loaded };
       } else {
-        return { ...state, isLoading: false, posts };
+        return { ...state, isLoading: false, hasMore, posts };
       }
     }
     case LOADED_MORE: {
       const { posts } = action;
+      const hasMore = !!(posts.length && posts.length === limit);
       return {
         ...state,
         isLoading: false,
         posts: posts.length ? [...state.posts, ...posts] : state.posts,
+        hasMore,
       };
     }
     default:
@@ -79,17 +86,17 @@ export const useBlogStore = () => {
     () => ({
       load: async () => {
         dispatch({ type: LOADING });
-        const posts = await loadPosts();
+        const posts = await loadPosts(limit);
         dispatch({ type: LOADED, posts });
       },
 
       loadMore: async () => {
-        if (state.isLoading || !state.posts.length) {
+        if (state.isLoading || !state.hasMore || !state.posts.length) {
           return;
         }
         dispatch({ type: LOADING });
         const lastPost = state.posts[state.posts.length - 1];
-        const posts = await loadPosts(lastPost.id);
+        const posts = await loadPosts(limit, lastPost.id);
         dispatch({ type: LOADED_MORE, posts });
       },
 

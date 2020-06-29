@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoPostsYet renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "padding": 40,
+    }
+  }
+>
+  <Text>
+    You don't have any posts yet.
+  </Text>
+  <Text>
+     
+  </Text>
+  <Text>
+    Start by tapping the Plus button at the bottom to create your first post.
+  </Text>
+</View>
+`;
