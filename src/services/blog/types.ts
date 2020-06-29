@@ -6,6 +6,7 @@ export interface PostData {
   body: string;
   cover: string;
   published: FirebaseFirestoreTypes.Timestamp;
+  updated: FirebaseFirestoreTypes.Timestamp;
   title: string;
 }
 

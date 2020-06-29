@@ -30,7 +30,7 @@ export const PostForm = ({
   }, [navigation, post]);
 
   const onPressDelete = () => deleteConfirmation(handleDelete);
-  const handleDelete = () => post && performDelete(post);
+  const handleDelete = () => post && performDelete(post) && navigation.pop(2);
 
   return (
     <>

@@ -30,7 +30,7 @@ import { ButtonRegular, Loading } from '..';
 import { useNavigation } from '@react-navigation/native';
 import { useSavePost } from '../../hooks/useSavePost';
 import { selectImage } from '../../lib';
-import { HOME } from '../../screens';
+import { HOME, PROFILE } from '../../screens';
 import { PostItem } from '../../services/blog/types';
 
 interface Props {
@@ -51,7 +51,7 @@ export const Form = ({ post }: Props) => {
     try {
       invariant(!isLoadingImage, 'Please wait till your cover image is loaded');
       await savePost(title, body, cover, post);
-      navigation.navigate(HOME);
+      navigation.navigate(post ? PROFILE : HOME);
     } catch (e) {
       setError(e.message);
     }

@@ -1,16 +1,13 @@
 import invariant from 'invariant';
 import ImageResizer from 'react-native-image-resizer';
-import { useNavigation } from '@react-navigation/native';
 import storage from '@react-native-firebase/storage';
 import firestore from '@react-native-firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import { useStore } from '../store';
-import { HOME } from '../screens';
 import { PostData, PostItem } from '../services/blog/types';
 
 export const useSavePost = () => {
-  const navigation = useNavigation();
   const [isSaving, setIsSaving] = useState(false);
   const { auth, blog } = useStore();
   const { user } = auth;
@@ -44,11 +41,13 @@ export const useSavePost = () => {
         url = await uploadImage(cover);
       }
 
+      const now = firestore.Timestamp.now();
       const data: PostData = {
         author: user.name,
         author_id: user.id,
         cover: url,
-        published: firestore.Timestamp.now(),
+        published: post ? post.published : now,
+        updated: now,
         title,
         body,
       };
@@ -59,7 +58,6 @@ export const useSavePost = () => {
         await blog.add(data);
       }
       setIsSaving(false);
-      navigation.navigate(HOME);
     } catch (e) {
       setIsSaving(false);
       throw e;
