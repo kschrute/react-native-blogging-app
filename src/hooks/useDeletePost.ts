@@ -15,8 +15,5 @@ export const useDeletePost = () => {
     navigation.navigate(HOME);
   };
 
-  return {
-    isDeleting,
-    performDelete,
-  };
+  return { isDeleting, performDelete };
 };

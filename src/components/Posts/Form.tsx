@@ -14,6 +14,7 @@ import {
 import invariant from 'invariant';
 import { useTextInput } from '../../hooks/useTextInput';
 import {
+  absolutePosition,
   colorLightGray,
   colorPlaceholder,
   colorPrimary,
@@ -21,7 +22,6 @@ import {
   coverImage,
   textError,
   textInput,
-  absolutePosition,
 } from '../../styles';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Icon } from 'react-native-elements';
@@ -38,10 +38,9 @@ interface Props {
 }
 
 export const Form = ({ post }: Props) => {
-  const savePost = useSavePost();
+  const { isSaving, savePost } = useSavePost();
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const [isLoading, setIsLoading] = useState(false);
   const [isLoadingImage, setIsLoadingImage] = useState(false);
   const [error, setError] = useState<string>();
   const [cover, setCover] = useState<string>(post?.cover || '');
@@ -50,14 +49,10 @@ export const Form = ({ post }: Props) => {
 
   const onPressSave = async () => {
     try {
-      invariant(!isLoading, 'Post is already being saved');
       invariant(!isLoadingImage, 'Please wait till your cover image is loaded');
-      setIsLoading(true);
       await savePost(title, body, cover, post);
-      setIsLoading(false);
       navigation.navigate(HOME);
     } catch (e) {
-      setIsLoading(false);
       setError(e.message);
     }
   };
@@ -92,7 +87,7 @@ export const Form = ({ post }: Props) => {
           paddingBottom: insets.bottom,
         }}
         showsVerticalScrollIndicator={false}>
-        <Loading state="Saving..." isLoading={isLoading} />
+        <Loading state="Saving..." isLoading={isSaving} />
         <View>
           {error && <Text style={textError}>{error}</Text>}
           <TextInput
@@ -133,8 +128,8 @@ export const Form = ({ post }: Props) => {
         </View>
         <View style={styles.bottom}>
           <ButtonRegular
-            title={isLoading ? 'Saving...' : post ? 'Save' : 'Post'}
-            disabled={isLoading || isLoadingImage}
+            title={isSaving ? 'Saving...' : post ? 'Save' : 'Post'}
+            disabled={isSaving || isLoadingImage}
             onPress={onPressSave}
           />
         </View>
