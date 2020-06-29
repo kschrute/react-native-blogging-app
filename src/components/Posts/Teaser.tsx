@@ -8,15 +8,15 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
-import { colorSecondary } from '../styles';
-import { PostItem } from '../services/blog/types';
-import { POST } from '../screens';
+import { colorSecondary } from '../../styles';
+import { PostItem } from '../../services/blog/types';
+import { POST } from '../../screens';
 
 interface Props {
   post: PostItem;
 }
 
-export const PostTeaser = React.memo(({ post }: Props) => {
+export const Teaser = React.memo(({ post }: Props) => {
   const navigation = useNavigation();
   const { title, author, cover, published } = post;
 

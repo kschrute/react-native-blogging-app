@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Posts renders correctly 1`] = `
+exports[`Teaser renders correctly 1`] = `
 <View
   style={
     Object {

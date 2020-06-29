@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { colorBackground, colorPrimary, iconButton } from '../styles';
-import { Header, Posts } from '../components';
 import { Icon } from 'react-native-elements';
+import { colorPrimary, container, iconButton } from '../styles';
+import { Header, Posts } from '../components';
 import { useStore } from '../store';
 import { POST_FORM, SIGN_UP } from '.';
 
@@ -14,9 +14,7 @@ export const Home = () => {
   const { auth } = useStore();
   const { user } = auth;
 
-  console.log('user', user);
-
-  const onPress = () => {
+  const addNewPost = () => {
     return user
       ? navigation.navigate(POST_FORM)
       : navigation.navigate(SIGN_UP, { isTryingToPost: true });
@@ -26,7 +24,7 @@ export const Home = () => {
     <>
       <View
         style={{
-          ...styles.container,
+          ...container,
           paddingTop: insets.top,
         }}>
         <Posts header={<Header />} />
@@ -37,20 +35,10 @@ export const Home = () => {
             name="plus"
             type="font-awesome"
             color={colorPrimary}
-            onPress={onPress}
+            onPress={addNewPost}
           />
         </View>
       </View>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colorBackground,
-  },
-  scrollView: {
-    padding: 20,
-  },
-});

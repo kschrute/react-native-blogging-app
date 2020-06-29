@@ -13,6 +13,8 @@ import { useTextInput } from '../hooks/useTextInput';
 import {
   colorLightGray,
   colorSecondary,
+  container,
+  growingContainer,
   textError,
   textInput,
 } from '../styles';
@@ -58,7 +60,7 @@ export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
       <ScrollView
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.inner}>
+        contentContainerStyle={styles.content}>
         <View style={styles.top}>
           {isTryingToPost && (
             <Text>You need to sign up or log in first to be able to post.</Text>
@@ -103,13 +105,11 @@ export const SignUp = ({ route }: ScreenProps<typeof SIGN_UP>) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    ...container,
     backgroundColor: colorLightGray,
   },
-  inner: {
-    flexGrow: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+  content: {
+    ...growingContainer,
     padding: 20,
   },
   top: {

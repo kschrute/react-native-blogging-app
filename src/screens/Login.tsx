@@ -11,6 +11,8 @@ import {
 import {
   colorLightGray,
   colorSecondary,
+  container,
+  growingContainer,
   textError,
   textInput,
 } from '../styles';
@@ -48,7 +50,7 @@ export const Login = ({ navigation }: ScreenProps<typeof LOGIN>) => {
       <ScrollView
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.inner}>
+        contentContainerStyle={styles.content}>
         <View style={styles.top}>
           {error && <Text style={textError}>{error}</Text>}
           <TextInput
@@ -80,13 +82,11 @@ export const Login = ({ navigation }: ScreenProps<typeof LOGIN>) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    ...container,
     backgroundColor: colorLightGray,
   },
-  inner: {
-    flexGrow: 1,
-    flexDirection: 'column',
-    justifyContent: 'center',
+  content: {
+    ...growingContainer,
     padding: 20,
   },
   top: {

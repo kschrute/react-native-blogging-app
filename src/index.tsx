@@ -20,7 +20,7 @@ const linkingConfig = {
   },
 };
 
-export default function App() {
+const App = () => {
   return (
     <StoreProvider>
       <NavigationContainer linking={linkingConfig}>
@@ -35,4 +35,6 @@ export default function App() {
       </NavigationContainer>
     </StoreProvider>
   );
-}
+};
+
+export default App;

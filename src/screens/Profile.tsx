@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ButtonLink, Loading, Posts } from '../components';
-import { colorBackground, textHeader } from '../styles';
+import { container, textHeader } from '../styles';
 import { HOME, PROFILE, ScreenProps } from '.';
 import { useStore } from '../store';
 
@@ -32,7 +32,7 @@ export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={container}>
       <Loading state={'Logging out...'} isLoading={isLoading} />
       <Posts header={header} showMyPosts />
     </View>
@@ -40,10 +40,6 @@ export const Profile = ({ navigation }: ScreenProps<typeof PROFILE>) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colorBackground,
-  },
   header: {
     paddingHorizontal: 20,
     paddingVertical: 20,

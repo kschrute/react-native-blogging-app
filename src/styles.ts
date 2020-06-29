@@ -7,6 +7,21 @@ export const colorLightGray = '#F9F9F9';
 export const colorBackground = '#FFFFFF';
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colorBackground,
+  },
+  growingContainer: {
+    flexGrow: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  coverImage: {
+    height: 200,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: colorPlaceholder,
+  },
   textHeader: {
     fontSize: 33,
     fontWeight: 'bold',
@@ -37,6 +52,22 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.33,
     shadowRadius: 3,
   },
+  absolutePosition: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
 });
 
-export const { iconButton, textHeader, textError, textInput } = styles;
+export const {
+  container,
+  coverImage,
+  growingContainer,
+  iconButton,
+  textHeader,
+  textError,
+  textInput,
+  absolutePosition,
+} = styles;
