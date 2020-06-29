@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details renders correctly 1`] = `
+<RCTScrollView
+  contentContainerStyle={
+    Object {
+      "flexDirection": "column",
+      "flexGrow": 1,
+      "justifyContent": "center",
+      "padding": 20,
+      "paddingBottom": 0,
+    }
+  }
+  keyboardShouldPersistTaps="handled"
+  showsVerticalScrollIndicator={false}
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+    }
+  }
+>
+  <View>
+    <View>
+      <Text
+        style={
+          Object {
+            "fontSize": 33,
+            "fontWeight": "bold",
+          }
+        }
+      >
+        Post Title
+      </Text>
+      <Text
+        style={
+          Object {
+            "marginBottom": 20,
+            "marginTop": 5,
+          }
+        }
+      >
+        author
+         on 
+        December 31, 2019
+      </Text>
+      <Image
+        source={
+          Object {
+            "uri": "cover-url",
+          }
+        }
+        style={
+          Object {
+            "borderColor": "#DDDDDD",
+            "borderRadius": 10,
+            "borderWidth": 1,
+            "height": 200,
+          }
+        }
+      />
+      <Text
+        style={
+          Object {
+            "fontSize": 18,
+            "marginVertical": 20,
+          }
+        }
+      >
+        Post Body
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "justifyContent": "flex-end",
+          "paddingBottom": 20,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "borderRadius": 10,
+            "overflow": "hidden",
+          }
+        }
+      >
+        <View
+          accessibilityRole="button"
+          accessibilityState={
+            Object {
+              "busy": false,
+              "disabled": false,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#607D8B",
+                "borderColor": "#2089dc",
+                "borderRadius": 3,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "padding": 8,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "color": "white",
+                  "fontSize": 18,
+                  "paddingBottom": 1,
+                  "paddingTop": 2,
+                  "textAlign": "center",
+                }
+              }
+            >
+              Share
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

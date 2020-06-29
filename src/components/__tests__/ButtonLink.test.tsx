@@ -6,14 +6,14 @@ import { ButtonLink } from '../ButtonLink';
 describe('ButtonLink', () => {
   it('renders correctly', () => {
     const component = renderer.create(
-      <ButtonLink title="title" onPress={() => {}} />,
+      <ButtonLink title="title" onPress={() => null} />,
     );
     expect(component).toMatchSnapshot();
   });
 
   it('renders correctly with custom color', () => {
     const component = renderer.create(
-      <ButtonLink title="title" color="white" onPress={() => {}} />,
+      <ButtonLink title="title" color="white" onPress={() => null} />,
     );
     expect(component).toMatchSnapshot();
   });
