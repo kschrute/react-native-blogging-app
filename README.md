@@ -17,3 +17,7 @@ A simple blogging app that allows users to view all posts or signup with an emai
 
 - React Native (Typescript)
 - Firebase 
+
+## Screenshots
+
+![Screenshot](screenshot.png?raw=true "Screenshot")
