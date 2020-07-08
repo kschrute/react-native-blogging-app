@@ -44,8 +44,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'ToptalBloggingApp' do
-  # Pods for ToptalBloggingApp
+target 'BloggingApp' do
+  # Pods for BloggingApp
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -79,7 +79,7 @@ target 'ToptalBloggingApp' do
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
-  target 'ToptalBloggingAppTests' do
+  target 'BloggingAppTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -96,10 +96,10 @@ target 'ToptalBloggingApp' do
   end
 end
 
-target 'ToptalBloggingApp-tvOS' do
-  # Pods for ToptalBloggingApp-tvOS
+target 'BloggingApp-tvOS' do
+  # Pods for BloggingApp-tvOS
 
-  target 'ToptalBloggingApp-tvOSTests' do
+  target 'BloggingApp-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

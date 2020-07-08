@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.toptalbloggingapp"
+        applicationId "com.bloggingapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

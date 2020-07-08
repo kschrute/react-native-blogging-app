@@ -7,20 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* ToptalBloggingAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ToptalBloggingAppTests.m */; };
+		00E356F31AD99517003FC87E /* BloggingAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BloggingAppTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		263F71CE0A43EEB653053970 /* libPods-ToptalBloggingApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C36A66035A7F5B0B66E86091 /* libPods-ToptalBloggingApp-tvOSTests.a */; };
+		263F71CE0A43EEB653053970 /* libPods-BloggingApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C36A66035A7F5B0B66E86091 /* libPods-BloggingApp-tvOSTests.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* ToptalBloggingAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ToptalBloggingAppTests.m */; };
-		718058A60DB683E8C68A033C /* libPods-ToptalBloggingApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1640591D8C90AABA6A5EC19 /* libPods-ToptalBloggingApp-tvOS.a */; };
-		AD596886598A1DF5D9E257EA /* libPods-ToptalBloggingApp-ToptalBloggingAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B841D746408D861BFF233D0 /* libPods-ToptalBloggingApp-ToptalBloggingAppTests.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* BloggingAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* BloggingAppTests.m */; };
+		718058A60DB683E8C68A033C /* libPods-BloggingApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1640591D8C90AABA6A5EC19 /* libPods-BloggingApp-tvOS.a */; };
+		AD596886598A1DF5D9E257EA /* libPods-BloggingApp-BloggingAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B841D746408D861BFF233D0 /* libPods-BloggingApp-BloggingAppTests.a */; };
 		B58FAD4824A1940600B33CB9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B58FAD4724A1940600B33CB9 /* GoogleService-Info.plist */; };
-		CCB62893FB11230D5E0474FC /* libPods-ToptalBloggingApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A992EBBB213A8A4444B44DF7 /* libPods-ToptalBloggingApp.a */; };
+		CCB62893FB11230D5E0474FC /* libPods-BloggingApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A992EBBB213A8A4444B44DF7 /* libPods-BloggingApp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,44 +29,44 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = ToptalBloggingApp;
+			remoteInfo = BloggingApp;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "ToptalBloggingApp-tvOS";
+			remoteInfo = "BloggingApp-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* ToptalBloggingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToptalBloggingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* BloggingAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BloggingAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* ToptalBloggingAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToptalBloggingAppTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* ToptalBloggingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToptalBloggingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ToptalBloggingApp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ToptalBloggingApp/AppDelegate.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* BloggingAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BloggingAppTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* BloggingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BloggingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = BloggingApp/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = BloggingApp/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ToptalBloggingApp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ToptalBloggingApp/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ToptalBloggingApp/main.m; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* ToptalBloggingApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToptalBloggingApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* ToptalBloggingApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ToptalBloggingApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2DEAF9B3D5930FABCB9C55E6 /* Pods-ToptalBloggingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToptalBloggingApp.debug.xcconfig"; path = "Target Support Files/Pods-ToptalBloggingApp/Pods-ToptalBloggingApp.debug.xcconfig"; sourceTree = "<group>"; };
-		486ADC03AA00005A2632B064 /* Pods-ToptalBloggingApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToptalBloggingApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ToptalBloggingApp-tvOSTests/Pods-ToptalBloggingApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		51F925FDB904C13E659C5B73 /* Pods-ToptalBloggingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToptalBloggingApp.release.xcconfig"; path = "Target Support Files/Pods-ToptalBloggingApp/Pods-ToptalBloggingApp.release.xcconfig"; sourceTree = "<group>"; };
-		76C02BC9BE8672625B73FD4C /* Pods-ToptalBloggingApp-ToptalBloggingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToptalBloggingApp-ToptalBloggingAppTests.release.xcconfig"; path = "Target Support Files/Pods-ToptalBloggingApp-ToptalBloggingAppTests/Pods-ToptalBloggingApp-ToptalBloggingAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		978FC867A193D375A99B1CEB /* Pods-ToptalBloggingApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToptalBloggingApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ToptalBloggingApp-tvOS/Pods-ToptalBloggingApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		9B841D746408D861BFF233D0 /* libPods-ToptalBloggingApp-ToptalBloggingAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToptalBloggingApp-ToptalBloggingAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1640591D8C90AABA6A5EC19 /* libPods-ToptalBloggingApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToptalBloggingApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A653B6253CCC5448691E492C /* Pods-ToptalBloggingApp-ToptalBloggingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToptalBloggingApp-ToptalBloggingAppTests.debug.xcconfig"; path = "Target Support Files/Pods-ToptalBloggingApp-ToptalBloggingAppTests/Pods-ToptalBloggingApp-ToptalBloggingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A992EBBB213A8A4444B44DF7 /* libPods-ToptalBloggingApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToptalBloggingApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA01521F4FEE7B6258C435B8 /* Pods-ToptalBloggingApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToptalBloggingApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ToptalBloggingApp-tvOS/Pods-ToptalBloggingApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BloggingApp/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BloggingApp/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = BloggingApp/main.m; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* BloggingApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BloggingApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* BloggingApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BloggingApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DEAF9B3D5930FABCB9C55E6 /* Pods-BloggingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloggingApp.debug.xcconfig"; path = "Target Support Files/Pods-BloggingApp/Pods-BloggingApp.debug.xcconfig"; sourceTree = "<group>"; };
+		486ADC03AA00005A2632B064 /* Pods-BloggingApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloggingApp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-BloggingApp-tvOSTests/Pods-BloggingApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		51F925FDB904C13E659C5B73 /* Pods-BloggingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloggingApp.release.xcconfig"; path = "Target Support Files/Pods-BloggingApp/Pods-BloggingApp.release.xcconfig"; sourceTree = "<group>"; };
+		76C02BC9BE8672625B73FD4C /* Pods-BloggingApp-BloggingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloggingApp-BloggingAppTests.release.xcconfig"; path = "Target Support Files/Pods-BloggingApp-BloggingAppTests/Pods-BloggingApp-BloggingAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		978FC867A193D375A99B1CEB /* Pods-BloggingApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloggingApp-tvOS.release.xcconfig"; path = "Target Support Files/Pods-BloggingApp-tvOS/Pods-BloggingApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		9B841D746408D861BFF233D0 /* libPods-BloggingApp-BloggingAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BloggingApp-BloggingAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1640591D8C90AABA6A5EC19 /* libPods-BloggingApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BloggingApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A653B6253CCC5448691E492C /* Pods-BloggingApp-BloggingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloggingApp-BloggingAppTests.debug.xcconfig"; path = "Target Support Files/Pods-BloggingApp-BloggingAppTests/Pods-BloggingApp-BloggingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A992EBBB213A8A4444B44DF7 /* libPods-BloggingApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BloggingApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA01521F4FEE7B6258C435B8 /* Pods-BloggingApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloggingApp-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-BloggingApp-tvOS/Pods-BloggingApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		B58FAD4724A1940600B33CB9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		B90B7AEAA297428CCB518D65 /* Pods-ToptalBloggingApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToptalBloggingApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ToptalBloggingApp-tvOSTests/Pods-ToptalBloggingApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C36A66035A7F5B0B66E86091 /* libPods-ToptalBloggingApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToptalBloggingApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B90B7AEAA297428CCB518D65 /* Pods-BloggingApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BloggingApp-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BloggingApp-tvOSTests/Pods-BloggingApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C36A66035A7F5B0B66E86091 /* libPods-BloggingApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BloggingApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD596886598A1DF5D9E257EA /* libPods-ToptalBloggingApp-ToptalBloggingAppTests.a in Frameworks */,
+				AD596886598A1DF5D9E257EA /* libPods-BloggingApp-BloggingAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCB62893FB11230D5E0474FC /* libPods-ToptalBloggingApp.a in Frameworks */,
+				CCB62893FB11230D5E0474FC /* libPods-BloggingApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				718058A60DB683E8C68A033C /* libPods-ToptalBloggingApp-tvOS.a in Frameworks */,
+				718058A60DB683E8C68A033C /* libPods-BloggingApp-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,20 +100,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				263F71CE0A43EEB653053970 /* libPods-ToptalBloggingApp-tvOSTests.a in Frameworks */,
+				263F71CE0A43EEB653053970 /* libPods-BloggingApp-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* ToptalBloggingAppTests */ = {
+		00E356EF1AD99517003FC87E /* BloggingAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* ToptalBloggingAppTests.m */,
+				00E356F21AD99517003FC87E /* BloggingAppTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = ToptalBloggingAppTests;
+			path = BloggingAppTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -124,7 +124,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* ToptalBloggingApp */ = {
+		13B07FAE1A68108700A75B9A /* BloggingApp */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -135,7 +135,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = ToptalBloggingApp;
+			name = BloggingApp;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -143,10 +143,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				A992EBBB213A8A4444B44DF7 /* libPods-ToptalBloggingApp.a */,
-				9B841D746408D861BFF233D0 /* libPods-ToptalBloggingApp-ToptalBloggingAppTests.a */,
-				A1640591D8C90AABA6A5EC19 /* libPods-ToptalBloggingApp-tvOS.a */,
-				C36A66035A7F5B0B66E86091 /* libPods-ToptalBloggingApp-tvOSTests.a */,
+				A992EBBB213A8A4444B44DF7 /* libPods-BloggingApp.a */,
+				9B841D746408D861BFF233D0 /* libPods-BloggingApp-BloggingAppTests.a */,
+				A1640591D8C90AABA6A5EC19 /* libPods-BloggingApp-tvOS.a */,
+				C36A66035A7F5B0B66E86091 /* libPods-BloggingApp-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -154,14 +154,14 @@
 		524478EB866B95036D6BC144 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2DEAF9B3D5930FABCB9C55E6 /* Pods-ToptalBloggingApp.debug.xcconfig */,
-				51F925FDB904C13E659C5B73 /* Pods-ToptalBloggingApp.release.xcconfig */,
-				A653B6253CCC5448691E492C /* Pods-ToptalBloggingApp-ToptalBloggingAppTests.debug.xcconfig */,
-				76C02BC9BE8672625B73FD4C /* Pods-ToptalBloggingApp-ToptalBloggingAppTests.release.xcconfig */,
-				AA01521F4FEE7B6258C435B8 /* Pods-ToptalBloggingApp-tvOS.debug.xcconfig */,
-				978FC867A193D375A99B1CEB /* Pods-ToptalBloggingApp-tvOS.release.xcconfig */,
-				B90B7AEAA297428CCB518D65 /* Pods-ToptalBloggingApp-tvOSTests.debug.xcconfig */,
-				486ADC03AA00005A2632B064 /* Pods-ToptalBloggingApp-tvOSTests.release.xcconfig */,
+				2DEAF9B3D5930FABCB9C55E6 /* Pods-BloggingApp.debug.xcconfig */,
+				51F925FDB904C13E659C5B73 /* Pods-BloggingApp.release.xcconfig */,
+				A653B6253CCC5448691E492C /* Pods-BloggingApp-BloggingAppTests.debug.xcconfig */,
+				76C02BC9BE8672625B73FD4C /* Pods-BloggingApp-BloggingAppTests.release.xcconfig */,
+				AA01521F4FEE7B6258C435B8 /* Pods-BloggingApp-tvOS.debug.xcconfig */,
+				978FC867A193D375A99B1CEB /* Pods-BloggingApp-tvOS.release.xcconfig */,
+				B90B7AEAA297428CCB518D65 /* Pods-BloggingApp-tvOSTests.debug.xcconfig */,
+				486ADC03AA00005A2632B064 /* Pods-BloggingApp-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -177,9 +177,9 @@
 			isa = PBXGroup;
 			children = (
 				B58FAD4724A1940600B33CB9 /* GoogleService-Info.plist */,
-				13B07FAE1A68108700A75B9A /* ToptalBloggingApp */,
+				13B07FAE1A68108700A75B9A /* BloggingApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* ToptalBloggingAppTests */,
+				00E356EF1AD99517003FC87E /* BloggingAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				524478EB866B95036D6BC144 /* Pods */,
@@ -192,10 +192,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* ToptalBloggingApp.app */,
-				00E356EE1AD99517003FC87E /* ToptalBloggingAppTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* ToptalBloggingApp-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* ToptalBloggingApp-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* BloggingApp.app */,
+				00E356EE1AD99517003FC87E /* BloggingAppTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* BloggingApp-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* BloggingApp-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,9 +203,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* ToptalBloggingAppTests */ = {
+		00E356ED1AD99517003FC87E /* BloggingAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ToptalBloggingAppTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BloggingAppTests" */;
 			buildPhases = (
 				3C0B9570AE0FFA5239C53FA0 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -218,14 +218,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = ToptalBloggingAppTests;
-			productName = ToptalBloggingAppTests;
-			productReference = 00E356EE1AD99517003FC87E /* ToptalBloggingAppTests.xctest */;
+			name = BloggingAppTests;
+			productName = BloggingAppTests;
+			productReference = 00E356EE1AD99517003FC87E /* BloggingAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* ToptalBloggingApp */ = {
+		13B07F861A680F5B00A75B9A /* BloggingApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ToptalBloggingApp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BloggingApp" */;
 			buildPhases = (
 				5128BE990C9C2B21676293DD /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -240,14 +240,14 @@
 			);
 			dependencies = (
 			);
-			name = ToptalBloggingApp;
-			productName = ToptalBloggingApp;
-			productReference = 13B07F961A680F5B00A75B9A /* ToptalBloggingApp.app */;
+			name = BloggingApp;
+			productName = BloggingApp;
+			productReference = 13B07F961A680F5B00A75B9A /* BloggingApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* ToptalBloggingApp-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* BloggingApp-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ToptalBloggingApp-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "BloggingApp-tvOS" */;
 			buildPhases = (
 				1676F0737D545EAFF54F3260 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -260,14 +260,14 @@
 			);
 			dependencies = (
 			);
-			name = "ToptalBloggingApp-tvOS";
-			productName = "ToptalBloggingApp-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* ToptalBloggingApp-tvOS.app */;
+			name = "BloggingApp-tvOS";
+			productName = "BloggingApp-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* BloggingApp-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* ToptalBloggingApp-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* BloggingApp-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ToptalBloggingApp-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "BloggingApp-tvOSTests" */;
 			buildPhases = (
 				254BFC96DAF3BDB1268B2C32 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -279,9 +279,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "ToptalBloggingApp-tvOSTests";
-			productName = "ToptalBloggingApp-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* ToptalBloggingApp-tvOSTests.xctest */;
+			name = "BloggingApp-tvOSTests";
+			productName = "BloggingApp-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* BloggingApp-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -310,7 +310,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ToptalBloggingApp" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "BloggingApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -323,10 +323,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* ToptalBloggingApp */,
-				00E356ED1AD99517003FC87E /* ToptalBloggingAppTests */,
-				2D02E47A1E0B4A5D006451C7 /* ToptalBloggingApp-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* ToptalBloggingApp-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* BloggingApp */,
+				00E356ED1AD99517003FC87E /* BloggingAppTests */,
+				2D02E47A1E0B4A5D006451C7 /* BloggingApp-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* BloggingApp-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -396,7 +396,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ToptalBloggingApp-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BloggingApp-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -418,7 +418,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ToptalBloggingApp-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BloggingApp-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -431,7 +431,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ToptalBloggingApp/Pods-ToptalBloggingApp-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BloggingApp/Pods-BloggingApp-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -472,7 +472,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ToptalBloggingApp/Pods-ToptalBloggingApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BloggingApp/Pods-BloggingApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
@@ -504,7 +504,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ToptalBloggingApp-ToptalBloggingAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BloggingApp-BloggingAppTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -517,7 +517,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ToptalBloggingApp-ToptalBloggingAppTests/Pods-ToptalBloggingApp-ToptalBloggingAppTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BloggingApp-BloggingAppTests/Pods-BloggingApp-BloggingAppTests-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -558,7 +558,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ToptalBloggingApp-ToptalBloggingAppTests/Pods-ToptalBloggingApp-ToptalBloggingAppTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BloggingApp-BloggingAppTests/Pods-BloggingApp-BloggingAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5128BE990C9C2B21676293DD /* [CP] Check Pods Manifest.lock */ = {
@@ -576,7 +576,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ToptalBloggingApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BloggingApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -638,7 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* ToptalBloggingAppTests.m in Sources */,
+				00E356F31AD99517003FC87E /* BloggingAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,7 +664,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* ToptalBloggingAppTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* BloggingAppTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,12 +673,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* ToptalBloggingApp */;
+			target = 13B07F861A680F5B00A75B9A /* BloggingApp */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* ToptalBloggingApp-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* BloggingApp-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -690,7 +690,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = ToptalBloggingApp;
+			path = BloggingApp;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -698,14 +698,14 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A653B6253CCC5448691E492C /* Pods-ToptalBloggingApp-ToptalBloggingAppTests.debug.xcconfig */;
+			baseConfigurationReference = A653B6253CCC5448691E492C /* Pods-BloggingApp-BloggingAppTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ToptalBloggingAppTests/Info.plist;
+				INFOPLIST_FILE = BloggingAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -715,17 +715,17 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToptalBloggingApp.app/ToptalBloggingApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BloggingApp.app/BloggingApp";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 76C02BC9BE8672625B73FD4C /* Pods-ToptalBloggingApp-ToptalBloggingAppTests.release.xcconfig */;
+			baseConfigurationReference = 76C02BC9BE8672625B73FD4C /* Pods-BloggingApp-BloggingAppTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = ToptalBloggingAppTests/Info.plist;
+				INFOPLIST_FILE = BloggingAppTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -735,13 +735,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToptalBloggingApp.app/ToptalBloggingApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BloggingApp.app/BloggingApp";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DEAF9B3D5930FABCB9C55E6 /* Pods-ToptalBloggingApp.debug.xcconfig */;
+			baseConfigurationReference = 2DEAF9B3D5930FABCB9C55E6 /* Pods-BloggingApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -751,15 +751,15 @@
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
-				INFOPLIST_FILE = ToptalBloggingApp/Info.plist;
+				INFOPLIST_FILE = BloggingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.konstantinshkut.ToptalBloggingApp;
-				PRODUCT_NAME = ToptalBloggingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.konstantinshkut.BloggingApp;
+				PRODUCT_NAME = BloggingApp;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -768,20 +768,20 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51F925FDB904C13E659C5B73 /* Pods-ToptalBloggingApp.release.xcconfig */;
+			baseConfigurationReference = 51F925FDB904C13E659C5B73 /* Pods-BloggingApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = ToptalBloggingApp/Info.plist;
+				INFOPLIST_FILE = BloggingApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.konstantinshkut.ToptalBloggingApp;
-				PRODUCT_NAME = ToptalBloggingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.konstantinshkut.BloggingApp;
+				PRODUCT_NAME = BloggingApp;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -789,7 +789,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA01521F4FEE7B6258C435B8 /* Pods-ToptalBloggingApp-tvOS.debug.xcconfig */;
+			baseConfigurationReference = AA01521F4FEE7B6258C435B8 /* Pods-BloggingApp-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -800,14 +800,14 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ToptalBloggingApp-tvOS/Info.plist";
+				INFOPLIST_FILE = "BloggingApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ToptalBloggingApp-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.BloggingApp-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -817,7 +817,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 978FC867A193D375A99B1CEB /* Pods-ToptalBloggingApp-tvOS.release.xcconfig */;
+			baseConfigurationReference = 978FC867A193D375A99B1CEB /* Pods-BloggingApp-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -828,14 +828,14 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ToptalBloggingApp-tvOS/Info.plist";
+				INFOPLIST_FILE = "BloggingApp-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ToptalBloggingApp-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.BloggingApp-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -845,7 +845,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B90B7AEAA297428CCB518D65 /* Pods-ToptalBloggingApp-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = B90B7AEAA297428CCB518D65 /* Pods-BloggingApp-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -855,24 +855,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ToptalBloggingApp-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "BloggingApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ToptalBloggingApp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.BloggingApp-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToptalBloggingApp-tvOS.app/ToptalBloggingApp-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BloggingApp-tvOS.app/BloggingApp-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 486ADC03AA00005A2632B064 /* Pods-ToptalBloggingApp-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 486ADC03AA00005A2632B064 /* Pods-BloggingApp-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -882,17 +882,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ToptalBloggingApp-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "BloggingApp-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.ToptalBloggingApp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.BloggingApp-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ToptalBloggingApp-tvOS.app/ToptalBloggingApp-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BloggingApp-tvOS.app/BloggingApp-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1013,7 +1013,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ToptalBloggingAppTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "BloggingAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1022,7 +1022,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ToptalBloggingApp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BloggingApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1031,7 +1031,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ToptalBloggingApp-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "BloggingApp-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1040,7 +1040,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ToptalBloggingApp-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "BloggingApp-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1049,7 +1049,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ToptalBloggingApp" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "BloggingApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

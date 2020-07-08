@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 const noHeader = { options: { headerShown: false } };
 const screenOptions = { headerBackTitle: ' ' };
 const linkingOptions = {
-  prefixes: ['toptalbloggingapp://'],
+  prefixes: ['bloggingapp://'],
   config: {
     Post: 'post/:id',
   },
